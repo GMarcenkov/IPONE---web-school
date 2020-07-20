@@ -1,0 +1,17 @@
+.form_year{
+    font-size:25px;
+    width: 100px;
+}
+.year_split{
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 40px;
+}
+.year_container{
+    display: flex;
+    margin: auto;
+    width: 250px;
+    margin-bottom: 40px;
+    margin-top: 20px;
+}

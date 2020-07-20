@@ -1,0 +1,42 @@
+
+.year_container{
+    margin-left: 300px;
+
+}
+.year_create_title{
+    text-align: center;
+    margin-top: 30px;
+    font-size: 40px;
+    color: #125899;
+    font-weight: bold;
+    margin-bottom: 40px;
+
+}
+.year_create_form{
+    margin: auto;
+    width: 900px;
+    margin-bottom: 300px;
+}
+.year_holder{
+    display: flex;
+}
+.year_create_container{
+    margin: auto;
+    width: 900px;
+    margin-bottom: 500px;
+    height: 100vh;
+}
+.year_list_container{
+    margin-right:10px;
+    border-right: solid 2px #125899;
+}
+.grade_list_form{
+    width:350px;
+    margin-left:30px;
+}
+.year_title_border{
+    border-bottom: solid 2px #125899;
+    width: 70%;
+    margin: auto;
+    margin-bottom: 30px;
+}
