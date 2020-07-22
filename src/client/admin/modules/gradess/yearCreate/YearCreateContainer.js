@@ -10,7 +10,8 @@ class YearCreateContainer extends React.Component {
     super(props);
 
     this.state = {
-      editModel:false,
+      editModel: false,
+      editGrade: {},
       yearFrom: null,
       yearTo: null,
       grade: 1,
@@ -24,9 +25,7 @@ class YearCreateContainer extends React.Component {
       schoolYear: {
         yearFrom: 2019,
         yearTo: 2020,
-        juniorSchool: [],
-        interSchool: [],
-        highSchool: []
+        grades:[]
       }
     };
   }
@@ -99,154 +98,89 @@ class YearCreateContainer extends React.Component {
       subGrade: subGrade,
       students: students
     };
-    let filterJuniorSchool = schoolYear.juniorSchool.filter(
+    let filterGradesSchool = schoolYear.grades.filter(
       grade =>
         grade.subGrade === NewGrade.subGrade && grade.grade === NewGrade.grade
     );
-    let filterInterSchool = schoolYear.interSchool.filter(
-      grade =>
-        grade.subGrade === NewGrade.subGrade && grade.grade === NewGrade.grade
-    );
-    let filterHighSchool = schoolYear.highSchool.filter(
-      grade =>
-        grade.subGrade === NewGrade.subGrade && grade.grade === NewGrade.grade
-    );
-    if (parseInt(grade) > 0 && parseInt(grade) < 5) {
-      if (filterJuniorSchool.length === 0) {
-        schoolYear.juniorSchool.push(NewGrade);
+      if (filterGradesSchool.length === 0) {
+        schoolYear.grades.push(NewGrade);
         this.setState({
           students: [],
           teacher: "",
           grade: 1,
           subGrade: "a"
         });
-      }
-    }
-    if (parseInt(grade) > 4 && parseInt(grade) < 8) {
-      if (filterInterSchool.length === 0) {
-        schoolYear.interSchool.push(NewGrade);
-        this.setState({
-          students: [],
-          teacher: "",
-          grade: 1,
-          subGrade: "a"
-        });
-      }
-    }
-    if (parseInt(grade) > 7 && parseInt(grade) < 13) {
-      if (filterHighSchool.length === 0) {
-        schoolYear.highSchool.push(NewGrade);
-        this.setState({
-          students: [],
-          teacher: "",
-          grade: 1,
-          subGrade: "a"
-        });
-      }
     }
     this.setState({});
     localStorage.setItem("schoolYear", JSON.stringify(this.state.schoolYear));
-    console.log(this.state.schoolYear);
   };
   handleDeleteStudent = id => {
     const { students } = this.state;
     let newStudents = students.filter(stu => stu._id !== id);
     this.setState({ students: newStudents });
   };
-  handleDeleteGrade = (grade, subGrade) => {
-    console.log(grade, subGrade);
-    const { schoolYear } = this.state;
+  handleDeleteGrade = () => {
 
-    if (parseInt(grade) > 0 && parseInt(grade) < 5) {
-      let newGrade = schoolYear.juniorSchool.filter(
-        grd => grd.grade !== grade && grd.subGrade !== subGrade
+    const { schoolYear,editGrade } = this.state;
+
+      let newGrade = schoolYear.grades.filter(
+        grd => grd.grade !== editGrade.grade || grd.subGrade !== editGrade.subGrade
       );
+
       this.setState({
-        schoolYear: { ...this.state.schoolYear, juniorSchool: newGrade }
+        schoolYear: { ...this.state.schoolYear, grades: newGrade },
+        editModel:false
       });
-    }
-    // if (parseInt(grade) > 4 && parseInt(grade) < 8) {
-    //   let newGrade = students.filter(stu => stu._id !== id);
-    // }
-    // if (parseInt(grade) > 7 && parseInt(grade) < 13) {
-    //   let newGrade = students.filter(stu => stu._id !== id);
-    // }
-  };
+    };
+
   handleTakeGrade = (grade, subGrade) => {
     const { schoolYear } = this.state;
 
-    if (parseInt(grade) > 0 && parseInt(grade) < 5) {
-      let newGrade = schoolYear.juniorSchool.filter(
+      let newGrade = schoolYear.grades.filter(
         grd => grd.grade === grade && grd.subGrade === subGrade
       );
       this.setState({
-        students: newGrade[0].students,
-        teacher: newGrade[0].teacher,
-        grade: newGrade[0].grade,
-        subGrade: newGrade[0].subGrade,
-        editModel:true
+        editGrade: newGrade[0],
+        editModel: true
       });
-    }
-    if (parseInt(grade) > 4 && parseInt(grade) < 8) {
-      let newGrade = schoolYear.interSchool.filter(
-        grd => grd.grade === grade && grd.subGrade === subGrade
-      );
-      this.setState({
-        students: newGrade[0].students,
-        teacher: newGrade[0].teacher,
-        grade: newGrade[0].grade,
-        subGrade: newGrade[0].subGrade,
-        editModel:true
-      });
-    }
-    if (parseInt(grade) > 7 && parseInt(grade) < 13) {
-      let newGrade = schoolYear.highSchool.filter(
-        grd => grd.grade === grade && grd.subGrade === subGrade
-      );
-      this.setState({
-        students: newGrade[0].students,
-        teacher: newGrade[0].teacher,
-        grade: newGrade[0].grade,
-        subGrade: newGrade[0].subGrade,
-        editModel:true
-      });
-    }
   };
-  handleEditGrade=()=>{
+  handleEditGrade = () => {
     const {
       teacher,
       grade,
       subGrade,
       students,
       schoolYear,
-      editModel
+      editGrade
     } = this.state;
 
-    let newGrade={
-      grade:grade,
-      subGrade:subGrade,
-      teacher:teacher,
-      students:students,
-    }
-    if (parseInt(grade) > 0 && parseInt(grade) < 5) {
-      let grades = schoolYear.juniorSchool.filter(
-          grd => grd.grade !== grade && grd.subGrade !== subGrade
-      );
-     console.log(grades)
-    }
-    if (parseInt(grade) > 4 && parseInt(grade) < 8) {
-      let newGrade = schoolYear.interSchool.filter(
-          grd => grd.grade === grade && grd.subGrade === subGrade
-      );
+    let newGrade = {
+      grade: parseInt(grade),
+      subGrade: subGrade,
+      teacher: teacher,
+      students: students
+    };
 
-    }
-    if (parseInt(grade) > 7 && parseInt(grade) < 13) {
-      let newGrade = schoolYear.highSchool.filter(
-          grd => grd.grade === grade && grd.subGrade === subGrade
-      );
+    let filterGradesSchool = schoolYear.grades.filter(
+      grade =>
+        grade.subGrade === newGrade.subGrade && grade.grade === newGrade.grade
+    );
 
+      if (filterGradesSchool.length === 0) {
+        let school = schoolYear.grades.filter(
+          grd =>
+            grd.grade !== editGrade.grade || grd.subGrade !== editGrade.subGrade
+        );
+        school.push(newGrade);
+        this.setState({
+          schoolYear: {
+            ...this.state.schoolYear,
+            grades: school,
+          },
+          editModel: false
+        });
     }
-  }
+  };
   render() {
     const {
       yearFrom,
@@ -268,11 +202,11 @@ class YearCreateContainer extends React.Component {
           <div className={YearCreate.year_create_title}>
             Създаване на учебна година
           </div>
-          <Year
-            yearFrom={yearFrom}
-            yearTo={yearTo}
-            handleInput={this.handleInput}
-          />
+            <Year
+                yearFrom={yearFrom}
+                yearTo={yearTo}
+                handleInput={this.handleInput}
+            />
         </div>
         <div className={YearCreate.year_holder}>
           <GradeListContainer
@@ -292,6 +226,7 @@ class YearCreateContainer extends React.Component {
             addStudent={addStudent}
             filterByName={filterByName}
             search={search}
+            handleDeleteGrade={this.handleDeleteGrade}
             handleEditGrade={this.handleEditGrade}
             handleDeleteStudent={this.handleDeleteStudent}
             handleInput={this.handleInput}

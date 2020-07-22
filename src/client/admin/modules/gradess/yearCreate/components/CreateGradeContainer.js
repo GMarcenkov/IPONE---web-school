@@ -6,8 +6,6 @@ import CreateGrade from "./createGrade/CreateGrade";
 import AddStudents from "./addStudents/AddStudents";
 
 const CreateGradeContainer = ({
-  yearFrom,
-  yearTo,
   handleEditGrade,
   handleDeleteStudent,
   teacher,
@@ -23,11 +21,14 @@ const CreateGradeContainer = ({
   handleInput,
   handleChangeFilter,
   handleSearch,
-  handleCreateGrade
+  handleCreateGrade,
+                                handleDeleteGrade
 }) => {
   return (
     <div className={YearCreate.year_create_container}>
-      <div className={YearCreate.year_create_title}>Създаване на клас</div>
+      <div className={YearCreate.year_create_title}>{
+        editModel?"Редактиране на клас":" Създаване на клас"
+      } </div>
       <div className={YearCreate.year_create_form}>
         <CreateGrade
           handleInput={handleInput}
@@ -46,24 +47,24 @@ const CreateGradeContainer = ({
           filterByName={filterByName}
           search={search}
         />
-        <div className={Grade.button_add_container}>
+        <div >
           {editModel ? (
             <div className={Grade.button_edit_form}>
               <button
-                className={Grade.add_grade}
+                className={Grade.edit_grade}
                 onClick={() => handleEditGrade()}
               >
                 Редактирай
               </button>
               <button
-                className={Grade.add_grade}
-                onClick={() => handleCreateGrade()}
+                className={Grade.delete_grade}
+                onClick={() => handleDeleteGrade()}
               >
                 Изтрий
               </button>
             </div>
           ) : (
-            <div>
+            <div className={Grade.button_add_container}>
               <button
                 className={Grade.add_grade}
                 onClick={() => handleCreateGrade()}

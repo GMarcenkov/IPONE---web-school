@@ -12,7 +12,7 @@ const GradeListContainer = ({ schoolYear, handleEditGrade }) => {
           <AllGradeList
             title={"Начален етап"}
             handleEditGrade={handleEditGrade}
-            schoolYear={schoolYear.juniorSchool}
+            schoolYear={schoolYear.grades}
             grades={[1, 2, 3, 4]}
           />
         </div>
@@ -20,7 +20,7 @@ const GradeListContainer = ({ schoolYear, handleEditGrade }) => {
           <AllGradeList
             handleEditGrade={handleEditGrade}
             title={"Прогимназия"}
-            schoolYear={schoolYear.interSchool}
+            schoolYear={schoolYear.grades}
             grades={[5, 6, 7]}
           />
         </div>
@@ -28,7 +28,7 @@ const GradeListContainer = ({ schoolYear, handleEditGrade }) => {
           <AllGradeList
             handleEditGrade={handleEditGrade}
             title={"Гимназиален курс"}
-            schoolYear={schoolYear.highSchool}
+            schoolYear={schoolYear.grades}
             grades={[8, 9, 10, 11, 12]}
           />
         </div>

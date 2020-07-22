@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 const Year = ({yearFrom, yearTo,handleInput}) => {
     return (
         <div className={YearCreate.year_container}>
+            <button className={YearCreate.button_create_year}>Създай учебната година</button>
             <div>
                 <div>ОТ:</div>
                 <input

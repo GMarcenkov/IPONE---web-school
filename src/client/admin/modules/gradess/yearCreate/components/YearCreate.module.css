@@ -17,6 +17,11 @@
     width: 900px;
     margin-bottom: 300px;
 }
+
+.create_year{
+    display: flex;
+    margin-bottom: 30px;
+}
 .year_holder{
     display: flex;
 }
