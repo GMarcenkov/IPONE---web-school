@@ -141,6 +141,7 @@ class YearCreateContainer extends React.Component {
       );
       this.setState({
         editGrade: newGrade[0],
+        students:newGrade[0].students,
         editModel: true
       });
   };
