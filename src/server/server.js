@@ -25,8 +25,8 @@ const usersRouter = require("./routes/users");
 app.use("/users", usersRouter);
 const authentication = require("./routes/authentication");
 app.use("/auth", authentication);
-const classRouter = require("./routes/class");
-app.use("/class", classRouter);
+const schoolYearRouter = require("./routes/schoolYear");
+app.use("/schoolYear", schoolYearRouter);
 const categoryRouter = require("./routes/category");
 app.use("/category", categoryRouter);
 

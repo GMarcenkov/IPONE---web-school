@@ -8,7 +8,7 @@ const GradePage = props => {
     return (
             <div>
                 <SideBar/>
-                <GradeListContainer year={props.computedMatch.params.year}/>
+                <GradeListContainer _id={props.computedMatch.params.year}/>
             </div>
     );
 };

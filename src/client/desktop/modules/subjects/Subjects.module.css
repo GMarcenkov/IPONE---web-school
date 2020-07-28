@@ -1,6 +1,6 @@
 .subjects_container_holder{
     margin: auto;
-    width: 900px;
+    width: 1300px;
     margin-top: 70px;
 }
 .subjects_container_title{
@@ -8,4 +8,7 @@
     font-weight: bolder;
     font-size: 40px;
     color: #125899;
+}
+.list_container{
+    margin-top: 100px;
 }

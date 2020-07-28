@@ -18,7 +18,7 @@ const StudentsTableRow = ({ student, handleDeleteStudent }) => {
         {" "}
         <FontAwesomeIcon
           className="stu_delete"
-          onClick={() => handleDeleteStudent(student._id)}
+          onClick={() => handleDeleteStudent(student)}
           icon={faUserSlash}
         />
       </td>

@@ -161,7 +161,7 @@ class ProductEditContainer extends React.Component {
           sku: 0,
           quantity: 0
         });
-        window.location.href = "/admincp/class";
+        window.location.href = "/admincp/schoolYear";
       })
       .catch(error =>
         this.setState({ error: "Името или SKU на пеодукта е вече използвано." })

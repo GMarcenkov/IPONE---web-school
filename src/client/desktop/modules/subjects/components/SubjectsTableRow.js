@@ -1,33 +1,21 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faUserSlash} from "@fortawesome/free-solid-svg-icons";
-import StudentTableRow
-    from "../../../../admin/modules/gradess/yearCreate/components/addStudents/components/studentsTableRow/StudentTableRow";
+import React from "react";
+import PropTypes from "prop-types";
+import SubjectTableRow from "./subjectsTableRow/SubjectTableRow";
+import Header from './subjectsTableRow/SubjectTableRow.module.css';
 
-const SubjectsTableRow = ({}) => {
-    return (
-        <SubjectsTableRow>
-            {/*<td className="stu_name">{student.name}</td>*/}
-            {/*<td className="stu_secondName">{student.secondName}</td>*/}
-            {/*<td className="stu_familyName">{student.familyName}</td>*/}
-            {/*<td className="stu_pin">{student.username}</td>*/}
-            {/*<td className="stu_phone">{student.phone}</td>*/}
-            {/*<td className="stu_email">{student.email}</td>*/}
-            {/*<td>*/}
-            {/*    {" "}*/}
-            {/*    <FontAwesomeIcon*/}
-            {/*        className="stu_delete"*/}
-            {/*        onClick={() => handleDeleteStudent(student._id)}*/}
-            {/*        icon={faUserSlash}*/}
-            {/*    />*/}
-            {/*</td>*/}
-        </SubjectsTableRow>
-    );
+const SubjectsTableRow = ({schoolYear, subject }) => {
+  return (
+    <SubjectTableRow>
+      <td className={Header.subject_title}>{subject.subject}{" "}{schoolYear.grade} клас</td>
+      <td className={Header.teacher}>{subject.teacher}</td>
+      <td className={Header.term}>{subject.rateFirstTerm+" "}</td>
+      <td className={Header.term}>{subject.rateSecondTerm+" "}</td>
+      <td className={Header.finalRate}>{subject.finalRate}</td>
+      <td className={Header.averageRate}>{subject.average}</td>
+    </SubjectTableRow>
+  );
 };
 
-SubjectsTableRow.propTypes = {
-
-};
+SubjectsTableRow.propTypes = {};
 
 export default SubjectsTableRow;

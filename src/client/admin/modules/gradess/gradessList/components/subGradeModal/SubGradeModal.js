@@ -3,7 +3,7 @@ import "../Grade.css";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-const SubGradeModal = ({ modalIsOpen, openModal,subGrades,grade }) => {
+const SubGradeModal = ({ modalIsOpen, openModal, subGrades, grade }) => {
   return (
     <div>
       {modalIsOpen ? (
@@ -16,20 +16,23 @@ const SubGradeModal = ({ modalIsOpen, openModal,subGrades,grade }) => {
             <div className="modal_subGrade_form_content">
               <table>
                 <tbody>
-                {console.log(subGrades)}
-                {
-                  subGrades.map(subGrade=>(
-                      <Link>
-                        <tr className="modal_subGrade_row">
-                          <td>{grade}-{subGrade.subGrade}</td>
-                          <td>{subGrade.teacher}</td>
-                        </tr>
-                      </Link>
-                  ))
-                }
+                  {subGrades.map(subGrade => (
+                    <Link>
+                      <tr className="modal_subGrade_row">
+                        <td>
+                          {grade}- {subGrade.subGrade === "a" ? "А" : null}
+                          {subGrade.subGrade === "b" ? "Б" : null}
+                          {subGrade.subGrade === "v" ? "В" : null}
+                          {subGrade.subGrade === "g" ? "Г" : null}
+                          {subGrade.subGrade === "d" ? "Д" : null}
+                          {subGrade.subGrade === "e" ? "Е" : null}
+                        </td>
+                        <td>{subGrade.teacher}</td>
+                      </tr>
+                    </Link>
+                  ))}
                 </tbody>
               </table>
-
             </div>
           </div>
         </div>

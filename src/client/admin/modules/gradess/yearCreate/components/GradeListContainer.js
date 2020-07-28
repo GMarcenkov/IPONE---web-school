@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import YearCreate from "./YearCreate.module.css";
 import AllGradeList from "./listAllGrades/AllGradeList";
 
-const GradeListContainer = ({ schoolYear, handleEditGrade }) => {
+const GradeListContainer = ({ grades, handleTakeGrade }) => {
   return (
     <div className={YearCreate.year_list_container}>
       <div className={YearCreate.grade_list_form}>
@@ -11,25 +11,25 @@ const GradeListContainer = ({ schoolYear, handleEditGrade }) => {
         <div>
           <AllGradeList
             title={"Начален етап"}
-            handleEditGrade={handleEditGrade}
-            schoolYear={schoolYear.grades}
-            grades={[1, 2, 3, 4]}
+            handleTakeGrade={handleTakeGrade}
+            grades={grades}
+            numbers={[1, 2, 3, 4]}
           />
         </div>
         <div>
           <AllGradeList
-            handleEditGrade={handleEditGrade}
+            handleTakeGrade={handleTakeGrade}
             title={"Прогимназия"}
-            schoolYear={schoolYear.grades}
-            grades={[5, 6, 7]}
+            grades={grades}
+            numbers={[5, 6, 7]}
           />
         </div>
         <div>
           <AllGradeList
-            handleEditGrade={handleEditGrade}
+            handleTakeGrade={handleTakeGrade}
             title={"Гимназиален курс"}
-            schoolYear={schoolYear.grades}
-            grades={[8, 9, 10, 11, 12]}
+            grades={grades}
+            numbers={[9, 10, 11, 12]}
           />
         </div>
       </div>

@@ -4,131 +4,60 @@ import JuniorSchool from "./components/JuniorSchool";
 import HighSchool from "./components/HighSchool";
 import "./components/Grade.css";
 import SubGradeModal from "./components/subGradeModal/SubGradeModal";
+import axios from "axios";
 
 class GradeListContainer extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      initialSchool: [
-        {
-          id: 1,
-          grade: 1,
-          subGrade: [
-            { id: 1, subGrade: "а", teacher: "Алета Кочовска" },
-            { id: 2, subGrade: "б", teacher: "Алета Кочовска" },
-            { id: 3, subGrade: "в", teacher: "Алета Кочовска" }
-          ]
-        },
-        {
-          id: 2,
-          grade: 2,
-          subGrade: [
-            { id: 1, subGrade: "а", teacher: "Алета Кочовска" },
-            { id: 2, subGrade: "б", teacher: "Алета Кочовска" },
-            { id: 3, subGrade: "в", teacher: "Алета Кочовска" }
-          ]
-        },
-        {
-          id: 3,
-          grade: 3,
-          subGrade: [
-            { id: 1, subGrade: "а", teacher: "Алета Кочовска" },
-            { id: 2, subGrade: "б", teacher: "Алета Кочовска" },
-            { id: 3, subGrade: "в", teacher: "Алета Кочовска" }
-          ]
-        },
-        {
-          id: 4,
-          grade: 4,
-          subGrade: [
-            { id: 1, subGrade: "а", teacher: "Алета Кочовска" },
-            { id: 2, subGrade: "б", teacher: "Алета Кочовска" },
-            { id: 3, subGrade: "в", teacher: "Алета Кочовска" }
-          ]
-        }
-      ],
-      juniorSchool: [
-        {
-          id: 5,
-          grade: 5,
-          subGrade: [
-            { id: 1, subGrade: "а", teacher: "Алета Кочовска" },
-            { id: 2, subGrade: "б", teacher: "Алета Кочовска" },
-            { id: 3, subGrade: "в", teacher: "Алета Кочовска" }
-          ]
-        },
-        {
-          id: 6,
-          grade: 6,
-          subGrade: [
-            { id: 1, subGrade: "а", teacher: "Алета Кочовска" },
-            { id: 2, subGrade: "б", teacher: "Алета Кочовска" },
-            { id: 3, subGrade: "в", teacher: "Алета Кочовска" }
-          ]
-        },
-        {
-          id: 7,
-          grade: 7,
-          subGrade: [
-            { id: 1, subGrade: "а", teacher: "Алета Кочовска" },
-            { id: 2, subGrade: "б", teacher: "Алета Кочовска" },
-            { id: 3, subGrade: "в", teacher: "Алета Кочовска" }
-          ]
-        }
-      ],
-      highSchool: [
-        {
-          id: 8,
-          grade: 8,
-          subGrade: [
-            { id: 1, subGrade: "а", teacher: "Алета Кочовска" },
-            { id: 2, subGrade: "б", teacher: "Алета Кочовска" },
-            { id: 3, subGrade: "в", teacher: "Алета Кочовска" }
-          ]
-        },
-        {
-          id: 9,
-          grade: 9,
-          subGrade: [
-            { id: 1, subGrade: "а", teacher: "Алета Кочовска" },
-            { id: 2, subGrade: "б", teacher: "Алета Кочовска" },
-            { id: 3, subGrade: "в", teacher: "Алета Кочовска" }
-          ]
-        },
-        {
-          id: 10,
-          grade: 10,
-          subGrade: [
-            { id: 1, subGrade: "а", teacher: "Алета Кочовска" },
-            { id: 2, subGrade: "б", teacher: "Алета Кочовска" },
-            { id: 3, subGrade: "в", teacher: "Алета Кочовска" }
-          ]
-        },
-        {
-          id: 11,
-          grade: 11,
-          subGrade: [
-            { id: 1, subGrade: "а", teacher: "Алета Кочовска" },
-            { id: 2, subGrade: "б", teacher: "Алета Кочовска" },
-            { id: 3, subGrade: "в", teacher: "Алета Кочовска" }
-          ]
-        },
-        {
-          id: 12,
-          grade: 12,
-          subGrade: [
-            { id: 1, subGrade: "а", teacher: "Алета Кочовска" },
-            { id: 2, subGrade: "б", teacher: "Алета Кочовска" },
-            { id: 3, subGrade: "в", teacher: "Алета Кочовска" }
-          ]
-        }
-      ],
+      initialSchool: [],
+      juniorSchool: [],
+      highSchool: [],
       subGrades: [],
       grade: null,
-      subGradeModalIsOpen: false
+      subGradeModalIsOpen: false,
+      yearFrom: "",
+      yearTo: ""
     };
   }
+  componentDidMount() {
+    this.handleGetSchoolYear();
+  }
+  handleGetSchoolYear = async () => {
+    let initialSchool = [];
+    let juniorSchool = [];
+    let highSchool = [];
+    await axios
+      .get(`http://localhost:5000/schoolYear/${this.props._id}`)
+      .then(response => {
+        console.log("ss", response);
+        this.setState({
+          yearFrom: response.data.yearFrom,
+          yearTo: response.data.yearTo
+        });
+        response.data.grades.map(grade => {
+          if (grade.grade > 0 && grade.grade < 5) {
+            initialSchool.push(grade);
+          }
+          if (grade.grade > 4 && grade.grade < 8) {
+            juniorSchool.push(grade);
+          }
+          if (grade.grade > 7 && grade.grade < 13) {
+            highSchool.push(grade);
+          }
+        });
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+    this.setState({
+      initialSchool: initialSchool,
+      juniorSchool: juniorSchool,
+      highSchool: highSchool
+    });
+    console.log(initialSchool);
+  };
   handleOpenModal = grade => {
     const { subGradeModalIsOpen } = this.state;
     console.log(grade);
@@ -141,7 +70,7 @@ class GradeListContainer extends React.Component {
     } else {
       this.setState({
         subGradeModalIsOpen: true,
-        subGrades: grade.subGrade,
+        subGrades: grade.subGrades,
         grade: grade.grade
       });
     }
@@ -154,13 +83,14 @@ class GradeListContainer extends React.Component {
       highSchool,
       subGradeModalIsOpen,
       subGrades,
-      grade
+      grade,
+      yearFrom,
+      yearTo
     } = this.state;
-    const { year } = this.props;
     return (
       <div className="grade_container">
         <div className="year_grade_title">
-          Учебна {year}/{year + 1} година
+          Учебна {yearFrom}/{yearTo} година
         </div>
         <InitialSchool
           initial={initialSchool}

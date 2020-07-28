@@ -6,13 +6,12 @@ const SubjectsTableHeader = props => {
     return (
         <SubjectTableHead>
             <tr>
-                <th>Име</th>
-                <th>Презиме</th>
-                <th>Фамилия</th>
-                <th>ЕГН</th>
-                <th>Телефон</th>
-                <th>Имейл</th>
-                <th>Действия</th>
+                <th>Предмет</th>
+                <th>Преподавател</th>
+                <th>Оценки от I-срок</th>
+                <th>Оценки от II-срок</th>
+                <th>Крайна Оценка</th>
+                <th>Ср. Арит. за годината</th>
             </tr>
         </SubjectTableHead>
     );
