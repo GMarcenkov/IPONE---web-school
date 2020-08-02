@@ -43,6 +43,12 @@ router.route("/:id").get((req, res) => {
     .catch(err => res.status(400).json("Error: " + err));
 });
 
+router.route("/findByYear/:year").get((req, res) => {
+    SchoolYear.findOne({yearFrom:req.params.year})
+        .then(exercise => res.json(exercise))
+        .catch(err => res.status(400).json("Error: " + err));
+});
+
 router.route("/delete/:id").delete((req, res) => {
   SchoolYear.findByIdAndDelete(req.params.id)
     .then(() => res.json("SchoolYear deleted."))
@@ -51,15 +57,15 @@ router.route("/delete/:id").delete((req, res) => {
 
 // router.route("/update/:id").put((req, res) => {
 //     SchoolYear.findById(req.params.id)
-//     .then(subject => {
-//       subject.title = req.body.title;
-//       subject.students = req.body.students;
-//       subject.quantity = req.body.quantity;
-//       subject.years = req.body.years;
-//       subject.teacher = req.body.teacher;
-//       subject.slug = req.body.slug;
-//       subject.date = Date.parse(req.body.date);
-//       subject
+//     .then(subjectCard => {
+//       subjectCard.title = req.body.title;
+//       subjectCard.students = req.body.students;
+//       subjectCard.quantity = req.body.quantity;
+//       subjectCard.years = req.body.years;
+//       subjectCard.teacher = req.body.teacher;
+//       subjectCard.slug = req.body.slug;
+//       subjectCard.date = Date.parse(req.body.date);
+//       subjectCard
 //         .save()
 //         .then(() => res.json(product))
 //         .catch(err => res.status(400).json("Error: " + err));

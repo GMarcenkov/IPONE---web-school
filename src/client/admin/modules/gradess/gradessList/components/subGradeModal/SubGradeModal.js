@@ -17,10 +17,10 @@ const SubGradeModal = ({ modalIsOpen, openModal, subGrades, grade }) => {
               <table>
                 <tbody>
                   {subGrades.map(subGrade => (
-                    <Link>
+                    <Link to={`${window.location.pathname}/${grade}/${subGrade.subGrade}`}>
                       <tr className="modal_subGrade_row">
                         <td>
-                          {grade}- {subGrade.subGrade === "a" ? "А" : null}
+                          {grade} - {subGrade.subGrade === "a" ? "А" : null}
                           {subGrade.subGrade === "b" ? "Б" : null}
                           {subGrade.subGrade === "v" ? "В" : null}
                           {subGrade.subGrade === "g" ? "Г" : null}

@@ -36,7 +36,7 @@ class YearsListContainer extends React.Component {
         <div className="years_container_title">Година на обучение</div>
         <div className="years_list">
           {this.state.years.map(year => (
-            <Link className="year_form" to={`/admincp/grade/${year._id}`}>
+            <Link className="year_form" to={`/admincp/grade/${year.yearFrom}`}>
               <div className="year_banner">
                 {year.yearFrom}/{year.yearTo}
               </div>

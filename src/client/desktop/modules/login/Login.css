@@ -58,5 +58,12 @@
 .input_form{
     font-size: 150%;
 }
-
+.logo{
+    color: #125899;
+    margin:auto;
+    width: 900px;
+    font-size: 70px;
+    font-weight: bolder;
+    text-shadow: 8px 2px 9px rgb(18, 88, 153);
+}
 

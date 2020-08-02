@@ -29,7 +29,7 @@ class GradeListContainer extends React.Component {
     let juniorSchool = [];
     let highSchool = [];
     await axios
-      .get(`http://localhost:5000/schoolYear/${this.props._id}`)
+      .get(`http://localhost:5000/schoolYear/findByYear/${this.props.yearFrom}`)
       .then(response => {
         console.log("ss", response);
         this.setState({
@@ -96,8 +96,14 @@ class GradeListContainer extends React.Component {
           initial={initialSchool}
           openModal={this.handleOpenModal}
         />
-        <JuniorSchool junior={juniorSchool} />
-        <HighSchool high={highSchool} />
+        <JuniorSchool
+            junior={juniorSchool}
+            openModal={this.handleOpenModal}
+        />
+        <HighSchool
+            high={highSchool}
+            openModal={this.handleOpenModal}
+        />
         <SubGradeModal
           grade={grade}
           subGrades={subGrades}

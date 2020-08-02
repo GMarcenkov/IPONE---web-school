@@ -40,7 +40,7 @@ class AdminRoutes extends Component {
           />
           <AuthenticatedRoute
               exact
-              path="/admincp/grade/:year/:grade"
+              path="/admincp/grade/:year/:grade/:subGrade"
               component={SubjectsPage}
           />
           <AuthenticatedRoute

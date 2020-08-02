@@ -1,5 +1,7 @@
 import React from "react";
-import "./components/Subjects.css";
+import "./components/Subjects.module.css";
+import SubjectCard from "./components/subjectCard/SubjectCard";
+import SubjectStyle from './components/Subjects.module.css'
 
 class SubjectsListContainer extends React.Component {
   constructor(props) {
@@ -9,36 +11,43 @@ class SubjectsListContainer extends React.Component {
       subjects: [
         {
           id: "1",
-          subject: "Математика",
-          teacher: "проф. доктор хонорис кауза Стефани Кангалова",
+          subject: "Български език",
+          teacher: "Стефани Кангалова",
           grade: 8,
           subGrade: "b"
         },
         {
           id: "1",
           subject: "Математика",
-          teacher: "проф. доктор хонорис кауза Стефани Кангалова",
+          teacher: "Стефани Кангалова",
           grade: 8,
           subGrade: "b"
         },
         {
           id: "1",
-          subject: "Математика",
-          teacher: "проф. доктор хонорис кауза Стефани Кангалова",
+          subject: "Английски език",
+          teacher: "Стефани Кангалова",
           grade: 8,
           subGrade: "b"
         },
         {
           id: "1",
-          subject: "Математика",
-          teacher: "проф. доктор хонорис кауза Стефани Кангалова",
+          subject: "География",
+          teacher: "Стефани Кангалова",
           grade: 8,
           subGrade: "b"
         },
         {
           id: "1",
-          subject: "Математика",
-          teacher: "проф. доктор хонорис кауза Стефани Кангалова",
+          subject: "Физическа култура и спорт",
+          teacher: "Стефани Кангалова",
+          grade: 8,
+          subGrade: "b"
+        },
+        {
+          id: "1",
+          subject: "Информационни технологии технологии технологии технологии",
+          teacher: "Стефани Кангалова",
           grade: 8,
           subGrade: "b"
         }
@@ -48,10 +57,18 @@ class SubjectsListContainer extends React.Component {
 
   render() {
     const { year, grade } = this.props;
+    const{ subjects}=this.state;
     return (
-      <div className="subjects_container">
-        <div className="subjects_title">
+      <div className={SubjectStyle.subjects_container}>
+        <div className={SubjectStyle.subjects_title}>
           Предмети за учебната {year} за {grade}. клас{" "}
+        </div>
+        <div className={SubjectStyle.subjects_holder}>
+          {
+            subjects.map(subject=>(
+              <SubjectCard subject={subject}/>
+            ))
+          }
         </div>
       </div>
     );

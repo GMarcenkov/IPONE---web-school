@@ -206,7 +206,7 @@ class ProductCreateContainer extends React.Component {
     };
     console.log(subject)
     // axios
-    //   .post("http://localhost:5000/products/add", subject)
+    //   .post("http://localhost:5000/products/add", subjectCard)
     //   .then(res =>
     //     this.setState({
     //       title: "",
