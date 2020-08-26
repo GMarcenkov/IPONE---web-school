@@ -58,7 +58,6 @@ class Login extends React.Component {
           ? (window.location.href = "/admincp")
           : (window.location.href = "/");
 
-        // window.location.href = "/admincp";
       })
       .catch(e => {
         this.setState({ request: "Failed to login" });
