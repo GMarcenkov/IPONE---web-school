@@ -5,6 +5,7 @@ import jwt_decode from "jwt-decode";
 import axios from "axios";
 import Profile from "./components/ProfileContainer.module.css";
 
+
 class ProfileContainer extends React.Component {
   constructor(props) {
     super(props);
@@ -20,6 +21,7 @@ class ProfileContainer extends React.Component {
     this.handleGetUser();
   }
   handleGetUser = async () => {
+
     let user = jwt_decode(localStorage.getItem("jwt"));
       axios
           .get(`http://localhost:5000/users/grade/${user.id}`)
