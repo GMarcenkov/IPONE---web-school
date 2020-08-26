@@ -12,8 +12,7 @@ const HomePage = props => {
     // }
   return (
     <div>
-        {console.log('kur')}
-      {/*<NavBar />*/}
+      <NavBar />
       {/*  <ProfileContainer/>*/}
     </div>
   );
