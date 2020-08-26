@@ -19,21 +19,33 @@ const SideBar = props => {
                 : "sideBar_titles"
             }
           >
-            Класове
+            Учебни години
           </Link>
         </li>
-          <li className="sideBar_titles">
-              <Link
-                  to={"/admincp/category"}
-                  className={
-                      window.location.pathname === "/admincp/category"
-                          ? "sideBar_titles_hover"
-                          : "sideBar_titles"
-                  }
-              >
-                  Категории
-              </Link>
-          </li>
+        <li className="sideBar_titles">
+          <Link
+            to={"/admincp/class/create"}
+            className={
+              window.location.pathname === "/admincp/class/create"
+                ? "sideBar_titles_hover"
+                : "sideBar_titles"
+            }
+          >
+            Създаване на класове по предмети
+          </Link>
+        </li>
+        <li className="sideBar_titles">
+          <Link
+            to={"/admincp/category"}
+            className={
+              window.location.pathname === "/admincp/category"
+                ? "sideBar_titles_hover"
+                : "sideBar_titles"
+            }
+          >
+            Категории
+          </Link>
+        </li>
         <li className="sideBar_titles">
           <Link
             to={"/admincp/users"}
@@ -43,16 +55,23 @@ const SideBar = props => {
                 : "sideBar_titles"
             }
           >
-            Служители
+            Ученици
           </Link>
         </li>
-
         <li className="sideBar_titles">
-          <a
-            href="/"
-            target="_blank"
-            className="sideBar_titles"
+          <Link
+            to={"/admincp/teachers"}
+            className={
+              window.location.pathname === "/admincp/teachers"
+                ? "sideBar_titles_hover"
+                : "sideBar_titles"
+            }
           >
+            Учители
+          </Link>
+        </li>
+        <li className="sideBar_titles">
+          <a href="/" target="_blank" className="sideBar_titles">
             <FontAwesomeIcon icon={faHome} />
           </a>
         </li>

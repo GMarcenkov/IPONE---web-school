@@ -9,9 +9,10 @@ const SubjectsTableHeader = props => {
                 <th>Предмет</th>
                 <th>Преподавател</th>
                 <th>Оценки от I-срок</th>
+                <th>Оценка за I-срок</th>
                 <th>Оценки от II-срок</th>
-                <th>Крайна Оценка</th>
-                <th>Ср. Арит. за годината</th>
+                <th>Оценка за II-срок</th>
+                <th>Оценка за годината</th>
             </tr>
         </SubjectTableHead>
     );

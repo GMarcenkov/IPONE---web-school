@@ -7,7 +7,7 @@ const SubjectsPage = props => {
     return (
         <div>
             <NavBar/>
-            <SubjectsContainer/>
+            <SubjectsContainer grade={props.match.params.year} />
         </div>
     );
 };

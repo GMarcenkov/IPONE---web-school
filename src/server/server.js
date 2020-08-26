@@ -23,10 +23,22 @@ connection.once("open", () => {
 
 const usersRouter = require("./routes/users");
 app.use("/users", usersRouter);
+const teacherRouter=require("./routes/teacher");
+app.use("/teacher",teacherRouter);
+const gradeRouter=require("./routes/grade");
+app.use("/grades",gradeRouter);
+const rateRouter=require("./routes/rate");
+app.use("/rates",rateRouter);
+const studentsInGradeRouter=require("./routes/studentsInGrade");
+app.use("/studentsInGrade",studentsInGradeRouter);
+const subjectRouter=require("./routes/subject");
+app.use("/subject",subjectRouter);
+const classRouter=require("./routes/subjectClass");
+app.use("/class",classRouter);
 const authentication = require("./routes/authentication");
 app.use("/auth", authentication);
 const schoolYearRouter = require("./routes/schoolYear");
-app.use("/schoolYear", schoolYearRouter);
+app.use("/schoolYears", schoolYearRouter);
 const categoryRouter = require("./routes/category");
 app.use("/category", categoryRouter);
 

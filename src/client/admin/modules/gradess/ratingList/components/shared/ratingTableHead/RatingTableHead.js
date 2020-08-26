@@ -1,7 +1,7 @@
 import React from 'react';
 import './ProductTableHead.css'
 
-const ProductTableHead = ({children}) => {
+const RatingTableHead = ({children}) => {
     return (
         <thead className="table_head">
             {children}
@@ -9,8 +9,8 @@ const ProductTableHead = ({children}) => {
     );
 };
 
-ProductTableHead.propTypes = {
+RatingTableHead.propTypes = {
 
 };
 
-export default ProductTableHead;
+export default RatingTableHead;

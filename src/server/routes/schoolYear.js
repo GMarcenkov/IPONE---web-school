@@ -42,11 +42,20 @@ router.route("/:id").get((req, res) => {
     .then(exercise => res.json(exercise))
     .catch(err => res.status(400).json("Error: " + err));
 });
+router.route("/:year/:grade/:subGrade").get((req, res) => {
+  SchoolYear.findOne({
+    yearFrom: req.params.year,
+    grade: req.params.grade,
+    subGrade: req.params.subGrade
+  })
+    .then(exercise => res.json(exercise))
+    .catch(err => res.status(400).json("Error: " + err));
+});
 
 router.route("/findByYear/:year").get((req, res) => {
-    SchoolYear.findOne({yearFrom:req.params.year})
-        .then(exercise => res.json(exercise))
-        .catch(err => res.status(400).json("Error: " + err));
+  SchoolYear.findOne({ yearFrom: req.params.year })
+    .then(exercise => res.json(exercise))
+    .catch(err => res.status(400).json("Error: " + err));
 });
 
 router.route("/delete/:id").delete((req, res) => {

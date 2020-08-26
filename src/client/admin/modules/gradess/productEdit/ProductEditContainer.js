@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import "../productCreate/components/ProductCreate.css";
+import "../classCreate/components/SubjectCreate.module.css";
 import slugify from "slugify";
 import Select from "react-select";
 import { CustomOption } from "../../category/components/CategoryCreate/CustomOption";

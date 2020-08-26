@@ -17,20 +17,22 @@ const CreateGradeContainer = ({
   filterByName,
   addStudent,
   search,
+  errors,
   handleAddStudent,
   handleInput,
   handleChangeFilter,
   handleSearch,
   handleCreateGrade,
-                                handleDeleteGrade
+  handleDeleteGrade
 }) => {
   return (
     <div className={YearCreate.year_create_container}>
-      <div className={YearCreate.year_create_title}>{
-        editModel?"Редактиране на клас":" Създаване на клас"
-      } </div>
+      <div className={YearCreate.year_create_title}>
+        {editModel ? "Редактиране на клас" : " Създаване на клас"}{" "}
+      </div>
       <div className={YearCreate.year_create_form}>
         <CreateGrade
+            errors={errors}
           handleInput={handleInput}
           teacher={teacher}
           grade={grade}
@@ -47,7 +49,12 @@ const CreateGradeContainer = ({
           filterByName={filterByName}
           search={search}
         />
-        <div >
+        {errors.students && (
+          <div className={YearCreate.error}>
+            <span>{errors.students}</span>
+          </div>
+        )}
+        <div>
           {editModel ? (
             <div className={Grade.button_edit_form}>
               <button

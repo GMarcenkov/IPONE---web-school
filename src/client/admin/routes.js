@@ -4,13 +4,14 @@ import UsersPage from "./pages/users/UsersPage";
 import HomePage from "./pages/home/HomePage";
 import ProductsPage from "./pages/products/producstPage/ProductsPage";
 import ProductEditPage from "./pages/products/productEdit/ProductEditPage";
-import ProductCreatePage from "./pages/products/productCreate/ProductCreatePage";
+import SubjectClassCreate from "./pages/products/SubjectClassCreate/SubjectClassCreate";
 import CategoryPage from "./pages/category/CategoryPage";
 import { AuthenticatedRoute } from "../helpers/guards/AuthenticatedRoute";
 import YearsPage from "./pages/products/yearsPage/YearsPage";
 import GradePage from "./pages/products/gradePage/GradePage";
 import SubjectsPage from "./pages/products/subjectsPage/SubjectsPage";
 import YearCreatePage from "./pages/products/yearCreatePage/YearCreatePage";
+import RatingPage from "./pages/products/ratingPage/RatingPage";
 
 class AdminRoutes extends Component {
   render() {
@@ -35,13 +36,18 @@ class AdminRoutes extends Component {
           />
           <AuthenticatedRoute
               exact
-              path="/admincp/grade/:year"
+              path="/admincp/grades/:year"
               component={GradePage}
           />
           <AuthenticatedRoute
               exact
-              path="/admincp/grade/:year/:grade/:subGrade"
+              path="/admincp/grade/:grade/"
               component={SubjectsPage}
+          />
+          <AuthenticatedRoute
+              exact
+              path="/admincp/rating/:id"
+              component={RatingPage}
           />
           <AuthenticatedRoute
               exact
@@ -55,8 +61,8 @@ class AdminRoutes extends Component {
           />
           <AuthenticatedRoute
             exact
-            path="/admincp/product/create"
-            component={ProductCreatePage}
+            path="/admincp/class/create"
+            component={SubjectClassCreate}
           />
           <AuthenticatedRoute
             exact

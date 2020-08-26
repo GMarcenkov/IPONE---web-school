@@ -80,3 +80,8 @@ font-size: 25px;
     background: darkred;
     font-weight: bolder;
 }
+.error{
+    color: red;
+    font-size: 25px;
+    text-align: center;
+}

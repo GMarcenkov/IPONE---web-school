@@ -3,11 +3,16 @@ import PropTypes from "prop-types";
 import YearCreate from "./YearCreate.module.css";
 import AllGradeList from "./listAllGrades/AllGradeList";
 
-const GradeListContainer = ({ grades, handleTakeGrade }) => {
+const GradeListContainer = ({ grades,errors, handleTakeGrade }) => {
   return (
     <div className={YearCreate.year_list_container}>
       <div className={YearCreate.grade_list_form}>
         <div className={YearCreate.year_create_title}>Класове</div>
+        {errors.grades && (
+            <div className={YearCreate.error}>
+              <span>{errors.grades}</span>
+            </div>
+        )}
         <div>
           <AllGradeList
             title={"Начален етап"}

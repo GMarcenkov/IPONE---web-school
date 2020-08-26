@@ -9,10 +9,12 @@ class UsersContainer extends React.Component {
 
     this.state = {
       users: [
-        {user: {
+        {
+          user: {
             username: "",
             password: ""
-          }}
+          }
+        }
       ],
       user: {
         username: "",
@@ -39,9 +41,11 @@ class UsersContainer extends React.Component {
         console.log(error);
       });
   };
-  handleInput=(event)=>{
-    this.setState({user:{...this.state.user,[event.target.name]:event.target.value}})
-  }
+  handleInput = event => {
+    this.setState({
+      user: { ...this.state.user, [event.target.name]: event.target.value }
+    });
+  };
   handleDeleteUser = id => {
     axios
       .delete(`http://localhost:5000/users/delete/${id}`)
@@ -58,20 +62,20 @@ class UsersContainer extends React.Component {
     let user = users.find(user => user._id === id);
     this.setState({
       editModalIsOpen: true,
-      user: { username: user.username,password:user.password },
+      user: { username: user.username, password: user.password },
       selectedUserId: user._id
     });
   };
 
   handleEditUSer = () => {
-    const { selectedUserId,user } = this.state;
+    const { selectedUserId, user } = this.state;
     axios
-      .put(`http://localhost:5000/users/edit/${selectedUserId}`,user)
+      .put(`http://localhost:5000/users/edit/${selectedUserId}`, user)
       .then(() => this.handleGetUsers());
-    this.setState({editModalIsOpen:false})
+    this.setState({ editModalIsOpen: false });
   };
   render() {
-    const { users, editModalIsOpen,user } = this.state;
+    const { users, editModalIsOpen, user } = this.state;
     return (
       <div>
         <UsersListTable
@@ -80,11 +84,11 @@ class UsersContainer extends React.Component {
           editUser={this.handleOpenEditModal}
         />
         <UserEditModal
-            user={user}
-            editUser={this.handleEditUSer}
+          user={user}
+          editUser={this.handleEditUSer}
           editModalIsOpen={editModalIsOpen}
           closeModal={this.handleCloseEditModal}
-            handleInput={this.handleInput}
+          handleInput={this.handleInput}
         />
       </div>
     );
@@ -94,3 +98,9 @@ class UsersContainer extends React.Component {
 UsersContainer.propTypes = {};
 
 export default UsersContainer;
+
+
+
+
+
+

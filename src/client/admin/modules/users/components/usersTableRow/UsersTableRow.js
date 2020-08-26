@@ -6,11 +6,16 @@ import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
 const UsersTableRow = ({ user, deleteUser,editUser }) => {
   return (
     <UserTableRow>
-      <td className="username">{user.username}</td>
+      <td className="username">{user.name}{" "}{user.secondName}{" "}{user.familyName}</td>
       <td className="date">
-        {" "}
-        <Timestamp date={user.createdAt} />
+          {user.username}
       </td>
+        <td className="date">
+            {user.phone}
+        </td>
+        <td className="date">
+            {user.email}
+        </td>
       <td className="action">
         <FontAwesomeIcon
           className="delete_user"

@@ -1,9 +1,9 @@
 import React from "react";
 import Grade from "./CreateGrade.module.css";
 import PropTypes from "prop-types";
-import YearCreate from "../year/Year.module.css";
 
-const CreateGrade = ({ subGrade, grade, teacher, handleInput }) => {
+
+const CreateGrade = ({ subGrade, grade,errors, teacher, handleInput }) => {
   return (
     <div className={Grade.input_container}>
       <div>
@@ -60,9 +60,11 @@ const CreateGrade = ({ subGrade, grade, teacher, handleInput }) => {
           onChange={handleInput}
           value={teacher}
         />
-        {/*<div style={{ color: "red" }}>*/}
-        {/*    {errors.quantity ? errors.quantity : ""}*/}
-        {/*</div>*/}
+        {errors.teacher && (
+            <div className={Grade.error}>
+              <span>{errors.teacher}</span>
+            </div>
+        )}
       </div>
     </div>
   );

@@ -9,7 +9,6 @@ const schoolYearSchema = new Schema(
       required: true,
       trim: true,
       minlength: 4,
-      unique: true
     },
     yearTo: {
       type: String,

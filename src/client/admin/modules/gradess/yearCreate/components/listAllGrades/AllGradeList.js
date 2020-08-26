@@ -15,28 +15,28 @@ const AllGradeList = ({ title, numbers, grades, handleTakeGrade }) => {
             <table className={Grade.grade_level}>
               <tbody>
                 {grades.map(grade =>
-                  grade.subGrades.map(subGrade => (
                     <React.Fragment>
-                      {number === grade.grade ? (
+                      {number === parseInt(grade.grade) ? (
                         <tr className={Grade.list_row}>
                           <td>
                             {grade.grade}{" "}
-                            {subGrade.subGrade === "a" ? "А" : null}
-                            {subGrade.subGrade === "b" ? "Б" : null}
-                            {subGrade.subGrade === "v" ? "В" : null}
-                            {subGrade.subGrade === "g" ? "Г" : null}
-                            {subGrade.subGrade === "d" ? "Д" : null}
-                            {subGrade.subGrade === "e" ? "Е" : null}
+                            {grade.subGrade === "a" ? "А" : null}
+                            {grade.subGrade === "b" ? "Б" : null}
+                            {grade.subGrade === "v" ? "В" : null}
+                            {grade.subGrade === "g" ? "Г" : null}
+                            {grade.subGrade === "d" ? "Д" : null}
+                            {grade.subGrade === "e" ? "Е" : null}
                           </td>
-                          <td>{subGrade.teacher}</td>
+                          <td>{grade.teacher}</td>
                           <td>
                             <FontAwesomeIcon
                               onClick={() =>
                                 handleTakeGrade(
-                                  grade,
-                                  subGrade.subGrade,
-                                  subGrade.teacher,
-                                  subGrade.students
+                                    grade._id,
+                                    grade.grade,
+                                    grade.subGrade,
+                                    grade.teacherId,
+                                    grade.students
                                 )
                               }
                               className={Grade.edit_icon}
@@ -46,7 +46,6 @@ const AllGradeList = ({ title, numbers, grades, handleTakeGrade }) => {
                         </tr>
                       ) : null}
                     </React.Fragment>
-                  ))
                 )}
               </tbody>
             </table>

@@ -14,14 +14,6 @@ const StudentsTableRow = ({ student, handleDeleteStudent }) => {
       <td className="stu_pin">{student.username}</td>
       <td className="stu_phone">{student.phone}</td>
       <td className="stu_email">{student.email}</td>
-      <td>
-        {" "}
-        <FontAwesomeIcon
-          className="stu_delete"
-          onClick={() => handleDeleteStudent(student)}
-          icon={faUserSlash}
-        />
-      </td>
     </StudentTableRow>
   );
 };

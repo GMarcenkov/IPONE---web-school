@@ -25,33 +25,80 @@ class GradeListContainer extends React.Component {
     this.handleGetSchoolYear();
   }
   handleGetSchoolYear = async () => {
-    let initialSchool = [];
-    let juniorSchool = [];
-    let highSchool = [];
+    let year = {
+      yearFrom: "",
+      yearTo: ""
+    };
     await axios
-      .get(`http://localhost:5000/schoolYear/findByYear/${this.props.yearFrom}`)
+      .get(`http://localhost:5000/schoolYears/${this.props.yearFrom}`)
+      .then(response => {
+        year.yearFrom = response.data.yearFrom;
+        year.yearTo = response.data.yearTo;
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+
+    let initialSchool = [
+      { grade: 1, grades: [] },
+      { grade: 2, grades: [] },
+      { grade: 3, grades: [] },
+      { grade: 4, grades: [] }
+    ];
+    let juniorSchool = [
+      { grade: 5, grades: [] },
+      { grade: 6, grades: [] },
+      { grade: 7, grades: [] }
+    ];
+    let highSchool = [
+      { grade: 8, grades: [] },
+      { grade: 9, grades: [] },
+      { grade: 10, grades: [] },
+      { grade: 11, grades: [] },
+      { grade: 12, grades: [] }
+    ];
+
+    await axios
+      .get(`http://localhost:5000/grades/year/${this.props.yearFrom}`)
       .then(response => {
         console.log("ss", response);
         this.setState({
           yearFrom: response.data.yearFrom,
           yearTo: response.data.yearTo
         });
-        response.data.grades.map(grade => {
-          if (grade.grade > 0 && grade.grade < 5) {
-            initialSchool.push(grade);
+        response.data.map(grade => {
+          if (parseInt(grade.grade) > 0 && parseInt(grade.grade) < 5) {
+            initialSchool.map(grd => {
+              if (grd.grade === parseInt(grade.grade)) {
+                grd.grades.push(grade);
+              }
+            });
           }
-          if (grade.grade > 4 && grade.grade < 8) {
-            juniorSchool.push(grade);
+          if (parseInt(grade.grade) > 4 && parseInt(grade.grade) < 8) {
+            juniorSchool.map(grd => {
+              if (grd.grade === parseInt(grade.grade)) {
+                grd.grades.push(grade);
+              }
+            });
           }
-          if (grade.grade > 7 && grade.grade < 13) {
-            highSchool.push(grade);
+          if (parseInt(grade.grade) > 7 && parseInt(grade.grade) < 13) {
+            highSchool.map(grd => {
+              if (grd.grade === parseInt(grade.grade)) {
+                grd.grades.push(grade);
+              }
+            });
           }
         });
       })
       .catch(function(error) {
         console.log(error);
       });
+    initialSchool= initialSchool.filter(grd=>grd.grades.length!==0)
+    juniorSchool= juniorSchool.filter(grd=>grd.grades.length!==0)
+    highSchool= highSchool.filter(grd=>grd.grades.length!==0)
     this.setState({
+      yearFrom: year.yearFrom,
+      yearTo: year.yearTo,
       initialSchool: initialSchool,
       juniorSchool: juniorSchool,
       highSchool: highSchool
@@ -70,8 +117,7 @@ class GradeListContainer extends React.Component {
     } else {
       this.setState({
         subGradeModalIsOpen: true,
-        subGrades: grade.subGrades,
-        grade: grade.grade
+        grade: grade
       });
     }
   };
@@ -96,17 +142,10 @@ class GradeListContainer extends React.Component {
           initial={initialSchool}
           openModal={this.handleOpenModal}
         />
-        <JuniorSchool
-            junior={juniorSchool}
-            openModal={this.handleOpenModal}
-        />
-        <HighSchool
-            high={highSchool}
-            openModal={this.handleOpenModal}
-        />
+        <JuniorSchool junior={juniorSchool} openModal={this.handleOpenModal} />
+        <HighSchool high={highSchool} openModal={this.handleOpenModal} />
         <SubGradeModal
           grade={grade}
-          subGrades={subGrades}
           modalIsOpen={subGradeModalIsOpen}
           openModal={this.handleOpenModal}
         />

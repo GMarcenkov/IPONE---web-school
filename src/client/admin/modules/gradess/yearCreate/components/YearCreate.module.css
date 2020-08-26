@@ -45,3 +45,8 @@
     margin: auto;
     margin-bottom: 30px;
 }
+.error{
+    color: red;
+    font-size: 25px;
+    text-align: center;
+}

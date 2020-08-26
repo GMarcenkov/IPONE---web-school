@@ -18,7 +18,7 @@ class YearsListContainer extends React.Component {
   }
   handleGetYears = () => {
     axios
-      .get("http://localhost:5000/schoolYear/years")
+      .get("http://localhost:5000/schoolYears/")
       .then(response => {
         console.log("ss", response);
         this.setState({
@@ -36,7 +36,7 @@ class YearsListContainer extends React.Component {
         <div className="years_container_title">Година на обучение</div>
         <div className="years_list">
           {this.state.years.map(year => (
-            <Link className="year_form" to={`/admincp/grade/${year.yearFrom}`}>
+            <Link className="year_form" to={`/admincp/grades/${year._id}`}>
               <div className="year_banner">
                 {year.yearFrom}/{year.yearTo}
               </div>

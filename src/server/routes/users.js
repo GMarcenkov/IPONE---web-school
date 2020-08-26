@@ -1,5 +1,6 @@
 const router = require("express").Router();
 let User = require("../models/user/user.model");
+let Grade = require("../models/grade/grade.model");
 const auth = require("../middlewares/authenticate");
 
 router.route("/").get((req, res) => {
@@ -22,7 +23,7 @@ router.route("/add").post((req, res) => {
     username,
     password,
     name,
-      secondName,
+    secondName,
     familyName,
     email,
     phone,
@@ -42,6 +43,35 @@ router.route("/:id").get((req, res) => {
     .catch(err => res.status(400).json("Error: " + err));
 });
 
+router.route("/grade/:userId").get((req, res) => {
+  let grades = [];
+
+  User.findById(req.params.userId)
+    .then(user => {
+      Promise.all(
+        user.schoolYears.map(gradeId =>
+          Grade.findById(gradeId).then(grade => {
+            grades.push(grade);
+          })
+        )
+      ).then(() => res.json(grades));
+    })
+    .catch(err => res.status(400).json("Error: " + err));
+});
+router.route("/username/:username").get((req, res) => {
+  let students = [];
+  User.find()
+    .then(users => {
+      users.map(user => {
+        if (user.username.includes(req.params.username)) {
+          students.push(user);
+        }
+      });
+      res.json(students);
+    })
+    .catch(err => res.status(400).json("Error: " + err));
+});
+
 router.route("/delete/:id").delete((req, res) => {
   User.findByIdAndDelete(req.params.id)
     .then(() => res.json("User deleted."))
@@ -53,8 +83,8 @@ router.route("/edit/:id").put((req, res) => {
     .then(user => {
       user.username = req.body.username;
       user.password = req.body.password;
+      user.schoolYears.push(req.body.year);
       user.date = Date.parse(req.body.date);
-
       user
         .save()
         .then(() => res.json("User updated!"))
@@ -62,4 +92,55 @@ router.route("/edit/:id").put((req, res) => {
     })
     .catch(err => res.status(400).json("Error: " + err));
 });
+
+router.route("/addSchoolYear/:id").put((req, res) => {
+  User.findById(req.params.id)
+    .then(user => {
+      user.schoolYears.push(req.body.schoolYear);
+      user
+        .save()
+        .then(() => res.json("User's schoolYear added!"))
+        .catch(err => res.status(400).json("Error: " + err));
+    })
+    .catch(err => res.status(400).json("Error: " + err));
+});
+router.route("/addSubject/:id/:year").put((req, res) => {
+  let subject = {
+    title: req.body.title,
+    slug: req.body.slug,
+    teacher: req.body.teacher,
+    ratingsFirstHalf: [],
+    rateFirstHalf: "",
+    ratingsSecondHalf: [],
+    rateSecondHalf: "",
+    rateForYear: ""
+  };
+  User.findById(req.params.id)
+    .then(user => {
+      user.schoolYears.map(schoolYear => {
+        if (schoolYear.yearFrom === req.params.year) {
+          schoolYear.subjects.push(subject);
+        }
+      });
+
+      user
+        .save()
+        .then(() => res.json(subject))
+        .catch(err => res.status(400).json("Error: " + err));
+    })
+    .catch(err => res.status(400).json("Error: " + err));
+});
+
+router.route("/deleteSchoolYear/:id").put((req, res) => {
+  User.findById(req.params.id)
+    .then(user => {
+      user.schoolYears.filter(req.body.schoolYear);
+      user
+        .save()
+        .then(() => res.json("User's schoolYear added!"))
+        .catch(err => res.status(400).json("Error: " + err));
+    })
+    .catch(err => res.status(400).json("Error: " + err));
+});
+
 module.exports = router;

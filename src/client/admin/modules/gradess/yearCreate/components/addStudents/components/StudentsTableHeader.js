@@ -12,7 +12,6 @@ const StudentsTableHeader= props => {
                 <th>ЕГН</th>
                 <th>Телефон</th>
                 <th>Имейл</th>
-                <th>Действия</th>
             </tr>
         </StudentTableHead>
     );

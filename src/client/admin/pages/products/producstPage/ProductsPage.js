@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import SideBar from "../../../modules/layout/SideBar/SideBar";
-import ProductsListContainer from "../../../modules/gradess/ratingList/ProductsListContainer";
+import RatingListContainer from "../../../modules/gradess/ratingList/RatingListContainer";
 
 const ProductsPage = props => {
     return (
         <div>
             <SideBar/>
-            <ProductsListContainer/>
+            <RatingListContainer/>
         </div>
     );
 };
