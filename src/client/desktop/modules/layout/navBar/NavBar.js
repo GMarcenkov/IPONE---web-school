@@ -17,7 +17,7 @@ if (localStorage.getItem("jwt") === null) {
 
 function Exit() {
   localStorage.removeItem("jwt");
-  window.open("/login");
+  window.location = '/login';
 }
 
 const NavBar = props => {
