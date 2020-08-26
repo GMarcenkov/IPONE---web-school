@@ -8,16 +8,10 @@ import SubjectsPage from "./pages/subjects/SubjectsPage";
 import jwt_decode from "jwt-decode";
 
 const Routes = props => {
-    let user={}
-    if(localStorage.getItem("jwt")){
-         user = jwt_decode(localStorage.getItem("jwt"));
-    }
-
-    console.log(user)
   return (
     <Router>
       <Switch>
-          <Route path="/" exact component={user.id===undefined?Login:HomePage}/>
+          <Route path="/" exact component={HomePage}/>
           <Route path="/subjects/:year" exact component={SubjectsPage} />
           <Route path="/category/:slug" component={CategoryProductsPage} />
           <Route path="/login" component={Login} />

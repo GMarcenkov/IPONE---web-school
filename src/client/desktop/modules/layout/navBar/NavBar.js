@@ -4,8 +4,7 @@ import { Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./NavBarStyl.css";
 import jwt_decode from "jwt-decode";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+
 
 let user;
 
