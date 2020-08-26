@@ -5,17 +5,17 @@ import "../../modules/layout/Wrapper/LayoutWrapper.css";
 import ProfileContainer from "../../modules/profile/ProfileContainer";
 
 const HomePage = props => {
-    // let jwt= localStorage.getItem('jwt')
-    // if(jwt===null){
-    //     window.location.href = "/login"
-    //     return;
-    // }
-  return (
-    <div>
-      <NavBar />
-      {/*  <ProfileContainer/>*/}
-    </div>
-  );
+    let jwt= localStorage.getItem('jwt')
+    if(jwt===null){
+        window.location.href = "/login"
+    }else{
+        return (
+            <div>
+                <NavBar />
+                <ProfileContainer/>
+            </div>
+        );
+    }
 };
 
 HomePage.propTypes = {};

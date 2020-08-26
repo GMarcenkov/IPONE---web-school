@@ -4,7 +4,6 @@ import { Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./NavBarStyl.css";
 import jwt_decode from "jwt-decode";
-import { CartContext } from "../../../cartContext/CartContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 
@@ -18,11 +17,10 @@ if (localStorage.getItem("jwt") === null) {
 
 function Exit() {
   localStorage.removeItem("jwt");
-  window.location.reload();
+  window.location.href = "/login"
 }
 
 const NavBar = props => {
-  const { cart, setCart } = useContext(CartContext);
   return (
     <div>
       <Navbar bg="dark" variant="dark">
@@ -35,8 +33,6 @@ const NavBar = props => {
           <Link to="/cart">
             <div style={{ color: "white" }}>
               {" "}
-              <FontAwesomeIcon icon={faShoppingCart} />
-              {cart.length}
             </div>
           </Link>
 

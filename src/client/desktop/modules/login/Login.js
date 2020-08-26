@@ -54,9 +54,9 @@ class Login extends React.Component {
       .then(req => {
         localStorage.setItem("jwt", req.data.token);
 
-        req.data.user.isAdmin
-          ? (window.location.href = "/admincp")
-          : (window.location.href = "/");
+        // req.data.user.isAdmin
+        //   ? (window.location.href = "/")
+           (window.location.href = "/")
 
       })
       .catch(e => {
