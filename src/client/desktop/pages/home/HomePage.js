@@ -7,7 +7,7 @@ import ProfileContainer from "../../modules/profile/ProfileContainer";
 const HomePage = props => {
   let jwt = localStorage.getItem("jwt");
   if (jwt === null) {
-    // window.location.href = "/login"
+    window.location.href = "/login"
     return (
       <div>
         <NavBar />
