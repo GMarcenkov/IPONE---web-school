@@ -52,7 +52,6 @@ class Login extends React.Component {
     await axios
       .post("http://localhost:5000/auth/", login)
       .then(req => {
-        console.log(req.data);
         localStorage.setItem("jwt", req.data.token);
 
         req.data.user.isAdmin

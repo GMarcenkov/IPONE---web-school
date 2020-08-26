@@ -13,10 +13,10 @@ const Routes = props => {
     <Router>
       <Switch>
         <CartContext.Provider value={{ cart, setCart }}>
+          <Route path="/login" component={Login} />
           <Route path="/" exact component={HomePage} />
           <Route path="/subjects/:year" exact component={SubjectsPage} />
           <Route path="/category/:slug" component={CategoryProductsPage} />
-          <Route path="/login" component={Login} />
         </CartContext.Provider>
       </Switch>
     </Router>
