@@ -31,9 +31,11 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "CI= react-scripts build",
+    "build": "CI= react-scripts build \"concurrently --names\" \"server,client\" \"npm run server --silent\" \"npm run client --silent\"",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "server": "cd src/server && nodemon server",
+    "client": "react-scripts start"
   },
   "eslintConfig": {
     "extends": "react-app"
