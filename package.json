@@ -12,6 +12,7 @@
     "axios": "^0.19.2",
     "bcrypt": "^4.0.1",
     "bootstrap": "^4.4.1",
+    "concurrently": "^5.2.0",
     "jsonwebtoken": "^8.5.1",
     "jwt-decode": "^2.2.0",
     "prettier": "^1.19.1",
@@ -25,7 +26,6 @@
     "react-scripts": "3.4.0",
     "react-select": "^3.1.0",
     "react-timestamp": "^5.1.0",
-    "concurrently": "^5.2.0",
     "slugify": "^1.4.0",
     "styl": "^0.2.9",
     "stylus": "^0.54.7"
@@ -34,10 +34,7 @@
     "start": "react-scripts start",
     "build": "CI= react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "server": "cd src/server && nodemon server",
-    "app": "concurrently --names \"server,client\" \"npm run server --silent\" \"npm run client --silent\"",
-    "client": "react-scripts start"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
