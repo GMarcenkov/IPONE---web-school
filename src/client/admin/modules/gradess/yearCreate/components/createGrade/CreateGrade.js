@@ -1,9 +1,10 @@
 import React from "react";
 import Grade from "./CreateGrade.module.css";
 import PropTypes from "prop-types";
+import Add from "../addStudents/AddStudents.module.css";
 
 
-const CreateGrade = ({ subGrade, grade,errors, teacher, handleInput }) => {
+const CreateGrade = ({ subGrade, grade,errors,search, teacher,handleSelectTeacher, handleInput,teachers }) => {
   return (
     <div className={Grade.input_container}>
       <div>
@@ -65,7 +66,31 @@ const CreateGrade = ({ subGrade, grade,errors, teacher, handleInput }) => {
               <span>{errors.teacher}</span>
             </div>
         )}
+        <div>
+          <table>
+            <tbody>
+            {teachers.map(stu => (
+                <tr className={Add.search_row}>
+                  <td>{stu.name}</td>
+                  <td>{stu.secondName}</td>
+                  <td>{stu.familyName}</td>
+                  <td>{stu.username}</td>
+                  <td>
+                    <button
+                        className={Add.stu_add}
+                        onClick={()=>handleSelectTeacher(stu._id)}
+                    >
+                      Избери
+                    </button>
+                  </td>
+                </tr>
+            ))}
+            </tbody>
+          </table>
+        </div>
       </div>
+
+
     </div>
   );
 };

@@ -44,6 +44,19 @@ router.route("/:id").get((req, res) => {
     .then(teacher => res.json(teacher))
     .catch(err => res.status(400).json("Error: " + err));
 });
+router.route("/username/:username").get((req, res) => {
+    let students = [];
+    Teacher.find()
+        .then(teachers => {
+            teachers.map(teacher => {
+                if (teacher.username.includes(req.params.username)) {
+                    students.push(teacher);
+                }
+            });
+            res.json(students);
+        })
+        .catch(err => res.status(400).json("Error: " + err));
+});
 
 router.route("/subject/:id").get((req, res) => {
   let teach = [];

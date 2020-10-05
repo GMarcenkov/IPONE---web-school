@@ -20,12 +20,14 @@ class YearCreateContainer extends React.Component {
       grade: 1,
       subGrade: "a",
       teacher: "",
+      teachers: [],
       students: [],
       users: [],
       newUsers: [],
       addStudent: "",
       filterByName: false,
       search: [],
+      teacherId: "",
       grades: [],
       request: "",
       errors: {}
@@ -39,8 +41,11 @@ class YearCreateContainer extends React.Component {
     if (this.state.yearId !== prevState.yearId) {
       this.handleGetGrades();
     }
-    if(this.state.username !== prevState.username){
-      this.handleGetUsers()
+    if (this.state.username !== prevState.username) {
+      this.handleGetUsers();
+    }
+    if (this.state.teacher !== prevState.teacher) {
+      this.handleGetTeachers();
     }
   }
 
@@ -104,26 +109,36 @@ class YearCreateContainer extends React.Component {
       })
       .catch(function(error) {});
   };
+  handleGetTeachers = async () => {
+    await axios
+      .get(`http://localhost:5000/teacher/username/${this.state.teacher}`)
+      .then(response => {
+        this.setState({
+          teachers: response.data
+        });
+      })
+      .catch(function(error) {});
+  };
   handleSearch = event => {
     this.setState({
       ...this.state,
       [event.target.name]: event.target.value
     });
-    if( event.target.value.trim().length===0){
+    if (event.target.value.trim().length === 0) {
       this.setState({ search: [] });
       return;
     }
-        if (this.state.filterByName) {
-
-        } else {
-          axios
-              .get(`http://localhost:5000/users/username/${event.target.value.trim()}`)
-              .then(response => {
-                this.setState({ search: response.data });
-              })
-              .catch(function(error) {});
-        }
-
+    if (this.state.filterByName) {
+    } else {
+      axios
+        .get(
+          `http://localhost:5000/users/username/${event.target.value.trim()}`
+        )
+        .then(response => {
+          this.setState({ search: response.data });
+        })
+        .catch(function(error) {});
+    }
   };
   handleChangeFilter = () => {
     if (this.state.filterByName) {
@@ -140,6 +155,10 @@ class YearCreateContainer extends React.Component {
     });
 
     this.setState({ search: [], users: stu, addStudent: "" });
+  };
+  handleSelectTeacher = teacher => {
+    let name=`${teacher.name}  ${teacher.familyName} - ${teacher.username}  `
+    this.setState({ teachers: [], teacherId: teacher,teacher:name });
   };
 
   handleAddSchoolYearToStudent = (student, grade, subGrade, teacher) => {
@@ -162,10 +181,10 @@ class YearCreateContainer extends React.Component {
       .then(() => {});
   };
   handleCreateGrade = async () => {
-    const { teacher, grade, subGrade, students, yearId, grades } = this.state;
+    const { teacherId, grade, subGrade, students, yearId, grades } = this.state;
     let studentsId = [];
     students.map(student => {
-      studentsId.push(student._id)
+      studentsId.push(student._id);
     });
 
     const errors = this.validateFormCreateGrade();
@@ -178,7 +197,7 @@ class YearCreateContainer extends React.Component {
       yearId: yearId,
       grade: parseInt(grade),
       subGrade: subGrade,
-      teacherId: ""
+      teacherId: teacherId
     };
     let studentsInGrade = {
       gradeId: "",
@@ -193,7 +212,6 @@ class YearCreateContainer extends React.Component {
       .catch(e => {
         this.setState({ request: "Failed to create" });
       });
-console.log(studentsInGrade)
     await axios
       .post("http://localhost:5000/studentsInGrade/add", studentsInGrade)
       .then(this.handleGetGrades)
@@ -213,20 +231,21 @@ console.log(studentsInGrade)
       .then(this.handleGetGrades);
     this.setState({ editModel: false });
   };
-  handleTakeGrade = (id, grade, subGrade, teacher) => {
+  handleTakeGrade = async (id, grade, subGrade, teacher) => {
+    await axios
+      .get(`http://localhost:5000/studentsInGrade/${id}`)
+      .then(response => {
+        this.setState({
+          students: response.data,
+          editModel: true
+        });
+      });
     this.setState({
       gradeId: id,
       grade: grade,
       subGrade: subGrade,
       teacher: teacher
     });
-    axios.get(`http://localhost:5000/studentsInGrade/${id}`).then(response => {
-      this.setState({
-        students: response.data.students,
-        editModel: true
-      });
-    });
-    this.setState({ editModel: false });
   };
   handleEditGrade = () => {
     const {
@@ -315,6 +334,15 @@ console.log(studentsInGrade)
     this.setState({ students: [], teacher: "" });
     localStorage.setItem("schoolYear", JSON.stringify(this.state.grades));
   };
+  handleClearState = () => {
+    this.setState({
+      students: [],
+      grade: {},
+      teacher: {},
+      subGrade: {},
+      editModel: false
+    });
+  };
   handleCreateSchoolYear = async () => {
     const { grades, yearFrom, yearTo } = this.state;
 
@@ -371,7 +399,8 @@ console.log(studentsInGrade)
       editModel,
       errors,
       years,
-      yearId
+      yearId,
+      teachers
     } = this.state;
     return (
       <div className={YearCreate.year_container}>
@@ -403,11 +432,14 @@ console.log(studentsInGrade)
           <CreateGradeContainer
             errors={errors}
             handleCreateGrade={this.handleCreateGrade}
+            handleClearState={this.handleClearState}
+            handleSelectTeacher={this.handleSelectTeacher}
             yearFrom={yearFrom}
             editModel={editModel}
             yearTo={yearTo}
             teacher={teacher}
             grade={grade}
+            teachers={teachers}
             subGrade={subGrade}
             students={students}
             users={users}

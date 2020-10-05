@@ -4,6 +4,8 @@ import YearCreate from "./YearCreate.module.css";
 import Grade from "./createGrade/CreateGrade.module.css";
 import CreateGrade from "./createGrade/CreateGrade";
 import AddStudents from "./addStudents/AddStudents";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLongArrowAltLeft } from "@fortawesome/free-solid-svg-icons";
 
 const CreateGradeContainer = ({
   handleEditGrade,
@@ -14,6 +16,8 @@ const CreateGradeContainer = ({
   subGrade,
   users,
   students,
+                                teachers,
+                                handleSelectTeacher,
   filterByName,
   addStudent,
   search,
@@ -23,20 +27,33 @@ const CreateGradeContainer = ({
   handleChangeFilter,
   handleSearch,
   handleCreateGrade,
-  handleDeleteGrade
+  handleDeleteGrade,
+  handleClearState
 }) => {
   return (
     <div className={YearCreate.year_create_container}>
-      <div className={YearCreate.year_create_title}>
-        {editModel ? "Редактиране на клас" : " Създаване на клас"}{" "}
-      </div>
+      {editModel ? (
+        <div className={YearCreate.year_create_title_container}>
+          <div className={YearCreate.back} >
+            <FontAwesomeIcon icon={faLongArrowAltLeft} onClick={()=>handleClearState()} />
+          </div>
+          <div className={YearCreate.year_create_title}>
+            Редактиране на клас
+          </div>
+        </div>
+      ) : (
+        <div className={YearCreate.year_create_title}>Създаване на клас</div>
+      )}
       <div className={YearCreate.year_create_form}>
         <CreateGrade
-            errors={errors}
+          errors={errors}
+          teachers={teachers}
+          handleSelectTeacher={handleSelectTeacher}
           handleInput={handleInput}
           teacher={teacher}
           grade={grade}
           subGrade={subGrade}
+          search={search}
         />
         <AddStudents
           handleDeleteStudent={handleDeleteStudent}

@@ -11,15 +11,15 @@
   font-size: 200px;
 }
 .navbarLogo {
+  margin-left: 100px;
   color: #125899;
-  text-shadow: 8px 1px 8px white;
   font-size: 40px;
   text-decoration: none;
+  font-weight: bolder;
 }
 .navbarLogo:hover {
   color: red;
 }
-
 .profile {
   color: white;
   right: 40px;

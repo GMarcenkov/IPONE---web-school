@@ -4,7 +4,8 @@ import { Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./NavBarStyl.css";
 import jwt_decode from "jwt-decode";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGraduationCap } from "@fortawesome/free-solid-svg-icons";
 
 let user;
 
@@ -25,7 +26,9 @@ const NavBar = props => {
       <Navbar bg="dark" variant="dark">
         <Navbar.Brand href="" className="containerr">
           <Link to="/" style={{ textDecoration: "none" }}>
-            <div className="navbarLogo">EasyTrade</div>
+            <div className="navbarLogo">
+              <FontAwesomeIcon  icon={faGraduationCap} />
+              IponWebSchool</div>
           </Link>
         </Navbar.Brand>
         <Nav className="mr-auto">
@@ -37,8 +40,6 @@ const NavBar = props => {
 
           {user ? (
             <div className="profile">
-              {" "}
-              Здравей {user.username}
               <button
                 className="btn btn-secondary mb-2 mr-2"
                 onClick={() => Exit()}

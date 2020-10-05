@@ -26,9 +26,10 @@ class ProfileContainer extends React.Component {
       axios
           .get(`http://localhost:5000/users/grade/${user.id}`)
           .then(response => {
-            this.setState({years:response.data});
+              let years = response.data.filter(year=>year!==null)
+            this.setState({years:years});
           })
-          .catch(function(error) {});
+          .catch(function(error) {})
     await axios
       .get(`http://localhost:5000/users/${user.id}`)
       .then(response => {
