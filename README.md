@@ -1,5 +1,8 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+ATLAS_URI=mongodb+srv://iponwebschool:Hl8Ttn3z@cluster0.atpve.mongodb.net/Cluster0?retryWrites=true&w=majority
+
+
 ## Available Scripts
 
 In the project directory, you can run:
