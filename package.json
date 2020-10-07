@@ -32,7 +32,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "CI= react-scripts build \"npm run server --silent\" ",
+    "build": "react-scripts build",
     "server": "cd src/server && nodemon server",
     "app": "concurrently --names \"server,client\" \"npm run server --silent\" \"npm start\"",
     "test": "react-scripts test",

@@ -41,6 +41,10 @@ app.use("/schoolYears", schoolYearRouter);
 const categoryRouter = require("./routes/category");
 app.use("/category", categoryRouter);
 
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('build'));
+}
+
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
 });
