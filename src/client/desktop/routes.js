@@ -3,9 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import HomePage from "./pages/home/HomePage";
 import Login from "./modules/login/Login";
 import CategoryProductsPage from "./pages/category/CategoryProductsPage";
-import { CartContext } from "./cartContext/CartContext";
 import SubjectsPage from "./pages/subjects/SubjectsPage";
-import jwt_decode from "jwt-decode";
 
 const Routes = props => {
   return (
