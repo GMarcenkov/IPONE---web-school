@@ -1,14 +1,12 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import * as serviceWorker from './serviceWorker';
 
+ReactDOM.render(<App />, document.getElementById('root'));
 
-require('dotenv').config();
-
-
-
-let env = require('./boot/env'),
-    server = require('./boot/server'),
-    logger = require('./server/utils/logger');
-
-server.load().then(() => {
-    logger.success('Server is running on port: ' + env.vars.SERVER_PORT);
-});
-
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: https://bit.ly/CRA-PWA
+serviceWorker.unregister();
