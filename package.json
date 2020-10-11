@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "NODE_ENV=production ./node_modules/.bin/netlify-lambda build src",
     "install-client": "cd client && npm install",
     "postbuild": "npm run install-client && CI= npm run build",
     "start": "node server.js",
