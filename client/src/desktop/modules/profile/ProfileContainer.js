@@ -24,7 +24,7 @@ class ProfileContainer extends React.Component {
 
     let user = jwt_decode(localStorage.getItem("jwt"));
       axios
-          .get(`https://unruffled-shaw-a7f049.netlify.app/.netlify/functions/api/v1/grade/${user.id}`)
+          .get(`https://unruffled-shaw-a7f049.netlify.app/.netlify/functions/api/v1/users/grade/${user.id}`)
           .then(response => {
               let years = response.data.filter(year=>year!==null)
             this.setState({years:years});
