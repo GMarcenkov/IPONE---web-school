@@ -50,7 +50,7 @@ class Login extends React.Component {
       password: this.state.password
     };
     await axios
-      .post("https://unruffled-shaw-a7f049.netlify.app/.netlify/functions/api/auth/", login)
+      .post("https://unruffled-shaw-a7f049.netlify.app/.netlify/functions/api/v1/auth/", login)
       .then(req => {
         localStorage.setItem("jwt", req.data.token);
 
