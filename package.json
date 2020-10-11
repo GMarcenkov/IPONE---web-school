@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "cd client && npm run build",
+    "build": "NODE_ENV=production ./node_modules/.bin/netlify-lambda build src",
     "install-client": "cd client && npm install",
     "postbuild": "npm run install-client && CI= npm run build",
     "start": "node server.js",
@@ -24,7 +24,9 @@
     "mongoose": "^5.9.5",
     "morgan": "^1.10.0",
     "multer": "^1.4.2",
+    "netlify-lambda": "^2.0.1",
     "path": "^0.12.7",
-    "react-router-dom": "^5.2.0"
+    "react-router-dom": "^5.2.0",
+    "serverless-http": "^2.6.0"
   }
 }
