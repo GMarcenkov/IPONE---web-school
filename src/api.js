@@ -45,7 +45,7 @@ app.use("/api/v1/schoolYears", schoolYearRouter);
 const categoryRouter = require("../routes/category");
 app.use("/api/v1/category", categoryRouter);
 
-app.use(`/api/v1/kur`, router);
+app.use(`/.netlify/functions/api`, router);
 
 module.exports = app;
 module.exports.handler = serverless(app);
