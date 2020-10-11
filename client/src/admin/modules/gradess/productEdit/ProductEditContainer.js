@@ -46,7 +46,7 @@ class ProductEditContainer extends React.Component {
 
   handleGetProductById = async () => {
     await axios
-      .get(`http://localhost:5000/products/${this.state.editedProductId}`)
+      .get(`https://unruffled-shaw-a7f049.netlify.app/.netlify/functions/api/v1/products/${this.state.editedProductId}`)
       .then(response => {
         console.log(response.data);
         this.setState({
@@ -64,7 +64,7 @@ class ProductEditContainer extends React.Component {
 
   handleGetCategory = async () => {
     await axios
-      .get("http://localhost:5000/category/")
+      .get("https://unruffled-shaw-a7f049.netlify.app/.netlify/functions/api/v1/category/")
       .then(response => {
         response.data.map(category => {
           this.handleBuildCategory(category, response.data);
@@ -148,7 +148,7 @@ class ProductEditContainer extends React.Component {
     };
     axios
       .put(
-        `http://localhost:5000/products/update/${this.state.editedProductId}`,
+        `https://unruffled-shaw-a7f049.netlify.app/.netlify/functions/api/v1/products/update/${this.state.editedProductId}`,
         product
       )
       .then(res => {

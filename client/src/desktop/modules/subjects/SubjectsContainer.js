@@ -22,7 +22,7 @@ handleGetSubjects= async ()=>{
     let rates=[]
 
   await  axios
-      .get(`/api/v1/rates/user/${user.id}/${this.props.grade}`)
+      .get(`https://unruffled-shaw-a7f049.netlify.app/.netlify/functions/api/v1/user/${user.id}/${this.props.grade}`)
       .then(response => {
         subjects=response.data.subjects
           teachers=response.data.teachers

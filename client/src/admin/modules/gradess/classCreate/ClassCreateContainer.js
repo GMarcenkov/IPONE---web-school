@@ -98,7 +98,7 @@ class ClassCreateContainer extends React.Component {
   handleGetYears = () => {
     let yearId = "";
     axios
-      .get("http://localhost:5000/schoolYears/")
+      .get("https://unruffled-shaw-a7f049.netlify.app/.netlify/functions/api/v1/schoolYears/")
       .then(response => {
         this.setState({
           years: response.data
@@ -133,7 +133,7 @@ class ClassCreateContainer extends React.Component {
       { grade: 12, grades: [] }
     ];
     await axios
-      .get(`http://localhost:5000/grades/${yearId}`)
+      .get(`https://unruffled-shaw-a7f049.netlify.app/.netlify/functions/api/v1/grades/${yearId}`)
       .then(response => {
         response.data.map(grade => {
           grades.map(grd => {
@@ -160,7 +160,7 @@ class ClassCreateContainer extends React.Component {
   handleGetSubjects = async () => {
     if (this.state.grade.grade !== undefined) {
       await axios
-        .get(`http://localhost:5000/subject/grade/${this.state.grade.grade}`)
+        .get(`https://unruffled-shaw-a7f049.netlify.app/.netlify/functions/api/v1/grade/${this.state.grade.grade}`)
         .then(response => {
           this.setState({ subjects: response.data });
           if (this.state.subject._id === undefined) {
@@ -181,7 +181,7 @@ class ClassCreateContainer extends React.Component {
   handleGetTeachers = async () => {
     if (this.state.subject !== undefined) {
       await axios
-        .get(`http://localhost:5000/teacher/subject/${this.state.subject._id}`)
+        .get(`https://unruffled-shaw-a7f049.netlify.app/.netlify/functions/api/v1/subject/${this.state.subject._id}`)
         .then(response => {
           this.setState({
             teachers: response.data,
@@ -205,7 +205,7 @@ class ClassCreateContainer extends React.Component {
   };
   handleGetStudents = async gradeId => {
     await axios
-      .get(`http://localhost:5000/studentsInGrade/${gradeId}`)
+      .get(`https://unruffled-shaw-a7f049.netlify.app/.netlify/functions/api/v1/studentsInGrade/${gradeId}`)
       .then(response => {
         this.setState({
           students: response.data,
@@ -237,10 +237,10 @@ class ClassCreateContainer extends React.Component {
       password: teacher.password
     };
     await axios
-      .post(`http://localhost:5000/class/add`, Class)
+      .post(`https://unruffled-shaw-a7f049.netlify.app/.netlify/functions/api/v1/class/add`, Class)
       .then(
         axios
-          .put(`http://localhost:5000/teacher/edit/${teacher._id}`, teacherEdit)
+          .put(`https://unruffled-shaw-a7f049.netlify.app/.netlify/functions/api/v1/teacher/edit/${teacher._id}`, teacherEdit)
           .catch(error => {})
       )
       .catch(error => {});

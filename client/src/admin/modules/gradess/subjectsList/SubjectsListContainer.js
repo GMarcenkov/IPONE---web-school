@@ -20,7 +20,7 @@ class SubjectsListContainer extends React.Component {
       let teachers=[];
       let subjects=[];
   await  axios
-      .get(`http://localhost:5000/grades/${this.props.grade}`)
+      .get(`https://unruffled-shaw-a7f049.netlify.app/.netlify/functions/api/v1/grades/${this.props.grade}`)
       .then(response => {
 
         this.setState({
@@ -29,13 +29,13 @@ class SubjectsListContainer extends React.Component {
       })
       .catch(function(error) {});
   await  axios
-      .get(`http://localhost:5000/class/grade/${this.props.grade}`)
+      .get(`https://unruffled-shaw-a7f049.netlify.app/.netlify/functions/api/v1/class/grade/${this.props.grade}`)
       .then(response => {
         subjects=response.data
       })
       .catch(function(error) {});
    await   axios
-          .get(`http://localhost:5000/teacher/grade/${this.props.grade}`)
+          .get(`https://unruffled-shaw-a7f049.netlify.app/.netlify/functions/api/v1/teacher/grade/${this.props.grade}`)
           .then(response => {
             teachers=response.data;
           })

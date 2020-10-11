@@ -62,7 +62,7 @@ class YearCreateContainer extends React.Component {
   };
   handleGetGrades = async () => {
     await axios
-      .get(`http://localhost:5000/grades/year/${this.state.yearId}`)
+      .get(`https://unruffled-shaw-a7f049.netlify.app/.netlify/functions/api/v1/grades/year/${this.state.yearId}`)
       .then(response => {
         this.setState({ grades: response.data });
       })
@@ -70,7 +70,7 @@ class YearCreateContainer extends React.Component {
   };
   handleGetYears = () => {
     axios
-      .get(`http://localhost:5000/schoolYears/`)
+      .get(`https://unruffled-shaw-a7f049.netlify.app/.netlify/functions/api/v1/schoolYears/`)
       .then(response => {
         this.setState({ years: response.data, yearId: response.data[0]._id });
       })
@@ -103,7 +103,7 @@ class YearCreateContainer extends React.Component {
   };
   handleGetUsers = async () => {
     await axios
-      .get(`http://localhost:5000/users/username/${this.state.username}`)
+      .get(`https://unruffled-shaw-a7f049.netlify.app/.netlify/functions/api/v1/users/username/${this.state.username}`)
       .then(response => {
         this.setState({ users: response.data });
       })
@@ -111,7 +111,7 @@ class YearCreateContainer extends React.Component {
   };
   handleGetTeachers = async () => {
     await axios
-      .get(`http://localhost:5000/teacher/username/${this.state.teacher}`)
+      .get(`https://unruffled-shaw-a7f049.netlify.app/.netlify/functions/api/v1/teacher/username/${this.state.teacher}`)
       .then(response => {
         this.setState({
           teachers: response.data
@@ -132,7 +132,7 @@ class YearCreateContainer extends React.Component {
     } else {
       axios
         .get(
-          `http://localhost:5000/users/username/${event.target.value.trim()}`
+          `https://unruffled-shaw-a7f049.netlify.app/.netlify/functions/api/v1/users/username/${event.target.value.trim()}`
         )
         .then(response => {
           this.setState({ search: response.data });
@@ -175,7 +175,7 @@ class YearCreateContainer extends React.Component {
     };
     axios
       .put(
-        `http://localhost:5000/users/addSchoolYear/${student._id}`,
+        `https://unruffled-shaw-a7f049.netlify.app/.netlify/functions/api/v1/users/addSchoolYear/${student._id}`,
         schoolYear
       )
       .then(() => {});
@@ -204,7 +204,7 @@ class YearCreateContainer extends React.Component {
       students: studentsId
     };
     await axios
-      .post("http://localhost:5000/grades/add", NewGrade)
+      .post("https://unruffled-shaw-a7f049.netlify.app/.netlify/functions/api/v1/grades/add", NewGrade)
       .then(response => {
         studentsInGrade.gradeId = response.data._id;
         this.handleGetGrades();
@@ -213,7 +213,7 @@ class YearCreateContainer extends React.Component {
         this.setState({ request: "Failed to create" });
       });
     await axios
-      .post("http://localhost:5000/studentsInGrade/add", studentsInGrade)
+      .post("https://unruffled-shaw-a7f049.netlify.app/.netlify/functions/api/v1/studentsInGrade/add", studentsInGrade)
       .then(this.handleGetGrades)
       .catch(e => {
         this.setState({ request: "Failed to create" });
@@ -227,13 +227,13 @@ class YearCreateContainer extends React.Component {
   };
   handleDeleteGrade = () => {
     axios
-      .delete(`http://localhost:5000/grades/delete/${this.state.gradeId}`)
+      .delete(`https://unruffled-shaw-a7f049.netlify.app/.netlify/functions/api/v1/grades/delete/${this.state.gradeId}`)
       .then(this.handleGetGrades);
     this.setState({ editModel: false });
   };
   handleTakeGrade = async (id, grade, subGrade, teacher) => {
     await axios
-      .get(`http://localhost:5000/studentsInGrade/${id}`)
+      .get(`https://unruffled-shaw-a7f049.netlify.app/.netlify/functions/api/v1/studentsInGrade/${id}`)
       .then(response => {
         this.setState({
           students: response.data,

@@ -18,7 +18,7 @@ class YearsListContainer extends React.Component {
   }
   handleGetYears = () => {
     axios
-      .get("http://localhost:5000/schoolYears/")
+      .get("https://unruffled-shaw-a7f049.netlify.app/.netlify/functions/api/v1/schoolYears/")
       .then(response => {
         console.log("ss", response);
         this.setState({

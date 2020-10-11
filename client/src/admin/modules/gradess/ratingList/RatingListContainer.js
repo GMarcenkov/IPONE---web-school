@@ -87,7 +87,7 @@ class RatingListContainer extends React.Component {
     };
     axios
       .put(
-        `http://localhost:5000/rates/edit/${students[indexOfStudent].rating._id}`,
+        `https://unruffled-shaw-a7f049.netlify.app/.netlify/functions/api/v1/rates/edit/${students[indexOfStudent].rating._id}`,
         rating
       )
       .then(response => {})
@@ -124,7 +124,7 @@ class RatingListContainer extends React.Component {
   handleGetStudents = async () => {
     let gradeId = "";
     await axios
-      .get(`http://localhost:5000/class/${this.props.subjectId}`)
+      .get(`https://unruffled-shaw-a7f049.netlify.app/.netlify/functions/api/v1/class/${this.props.subjectId}`)
       .then(response => {
         gradeId = response.data.gradeId;
       })
@@ -133,7 +133,7 @@ class RatingListContainer extends React.Component {
     let students = [];
     let ratings = [];
     await axios
-      .get(`http://localhost:5000/studentsInGrade/${gradeId}`)
+      .get(`https://unruffled-shaw-a7f049.netlify.app/.netlify/functions/api/v1/studentsInGrade/${gradeId}`)
       .then(response => {
         students = response.data;
       })
@@ -141,7 +141,7 @@ class RatingListContainer extends React.Component {
 
     await axios
       .get(
-        `http://localhost:5000/rates/subject/${this.props.subjectId}/${gradeId}`
+        `https://unruffled-shaw-a7f049.netlify.app/.netlify/functions/api/v1/rates/subject/${this.props.subjectId}/${gradeId}`
       )
       .then(response => {
         ratings = response.data;

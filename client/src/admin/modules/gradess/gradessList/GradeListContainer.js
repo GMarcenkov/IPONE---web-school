@@ -30,7 +30,7 @@ class GradeListContainer extends React.Component {
       yearTo: ""
     };
     await axios
-      .get(`http://localhost:5000/schoolYears/${this.props.yearFrom}`)
+      .get(`https://unruffled-shaw-a7f049.netlify.app/.netlify/functions/api/v1/schoolYears/${this.props.yearFrom}`)
       .then(response => {
         year.yearFrom = response.data.yearFrom;
         year.yearTo = response.data.yearTo;
@@ -59,7 +59,7 @@ class GradeListContainer extends React.Component {
     ];
 
     await axios
-      .get(`http://localhost:5000/grades/year/${this.props.yearFrom}`)
+      .get(`https://unruffled-shaw-a7f049.netlify.app/.netlify/functions/api/v1/grades/year/${this.props.yearFrom}`)
       .then(response => {
         console.log("ss", response);
         this.setState({

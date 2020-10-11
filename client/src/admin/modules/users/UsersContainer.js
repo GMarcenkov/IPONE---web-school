@@ -30,7 +30,7 @@ class UsersContainer extends React.Component {
   }
   handleGetUsers = () => {
     axios
-      .get("/api/v1/users/")
+      .get("https://unruffled-shaw-a7f049.netlify.app/.netlify/functions/api/v1/users/")
       .then(response => {
         console.log("ss", response);
         this.setState({
@@ -48,7 +48,7 @@ class UsersContainer extends React.Component {
   };
   handleDeleteUser = id => {
     axios
-      .delete(`http://localhost:5000/users/delete/${id}`)
+      .delete(`https://unruffled-shaw-a7f049.netlify.app/.netlify/functions/api/v1/${id}`)
       .then(() => this.handleGetUsers());
   };
   handleCloseEditModal = () => {
@@ -70,7 +70,7 @@ class UsersContainer extends React.Component {
   handleEditUSer = () => {
     const { selectedUserId, user } = this.state;
     axios
-      .put(`http://localhost:5000/users/edit/${selectedUserId}`, user)
+      .put(`https://unruffled-shaw-a7f049.netlify.app/.netlify/functions/api/v1/users/edit/${selectedUserId}`, user)
       .then(() => this.handleGetUsers());
     this.setState({ editModalIsOpen: false });
   };
