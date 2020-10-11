@@ -25,7 +25,7 @@ router.get("/", (req, res) => {
 
 app.use(morgan('tiny'));
 const usersRouter = require("../routes/users");
-app.use("/api/v1/users", usersRouter);
+app.use("/.netlify/functions/api/users", usersRouter);
 const teacherRouter=require("../routes/teacher");
 app.use("/api/v1/teacher",teacherRouter);
 const gradeRouter=require("../routes/grade");
@@ -43,7 +43,7 @@ app.use("/api/v1/auth", authentication);
 const schoolYearRouter = require("../routes/schoolYear");
 app.use("/api/v1/schoolYears", schoolYearRouter);
 const categoryRouter = require("../routes/category");
-app.use("/api/v1/category", categoryRouter);
+app.use("/.netlify/functions/api/category", categoryRouter);
 
 app.use(`/.netlify/functions/api`, router);
 
