@@ -31,27 +31,30 @@ app.use(express.urlencoded({ extended: false }));
 const usersRouter = require("./routes/users");
 app.use("/api/v1/users", usersRouter);
 const teacherRouter=require("./routes/teacher");
-app.use("/api/v1//teacher",teacherRouter);
+app.use("/api/v1/teacher",teacherRouter);
 const gradeRouter=require("./routes/grade");
-app.use("/api/v1//grades",gradeRouter);
+app.use("/api/v1/grades",gradeRouter);
 const rateRouter=require("./routes/rate");
-app.use("/api/v1//rates",rateRouter);
+app.use("/api/v1/rates",rateRouter);
 const studentsInGradeRouter=require("./routes/studentsInGrade");
-app.use("/api/v1//studentsInGrade",studentsInGradeRouter);
+app.use("/api/v1/studentsInGrade",studentsInGradeRouter);
 const subjectRouter=require("./routes/subject");
-app.use("/api/v1//subject",subjectRouter);
+app.use("/api/v1/subject",subjectRouter);
 const classRouter=require("./routes/subjectClass");
-app.use("/api/v1//class",classRouter);
+app.use("/api/v1/class",classRouter);
 const authentication = require("./routes/authentication");
-app.use("/api/v1//auth", authentication);
+app.use("/api/v1/auth", authentication);
 const schoolYearRouter = require("./routes/schoolYear");
-app.use("/api/v1//schoolYears", schoolYearRouter);
+app.use("/api/v1/schoolYears", schoolYearRouter);
 const categoryRouter = require("./routes/category");
-app.use("/api/v1//category", categoryRouter);
+app.use("/api/v1/category", categoryRouter);
 
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
+  console.log('production')
+}else{
+  console.log('develop')
 }
 
 app.use(morgan('tiny'));
