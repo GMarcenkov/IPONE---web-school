@@ -14,8 +14,8 @@ const Routes = props => {
       <Switch>
           <Route path="/" exact component={HomePage}/>
           <Route path="/subjects/:year" exact component={SubjectsPage} />
-          <Route path="/category/:slug" component={CategoryProductsPage} />
-          <Route path="/login" component={Login} />
+          <Route path="/category/:slug" exact component={CategoryProductsPage} />
+          <Route path="/login" exact component={Login} />
           <Route path="/contacts" component={ContactsPage} />
       </Switch>
     </Router>

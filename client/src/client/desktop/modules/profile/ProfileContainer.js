@@ -24,14 +24,14 @@ class ProfileContainer extends React.Component {
 
     let user = jwt_decode(localStorage.getItem("jwt"));
       axios
-          .get(`http://localhost:5000/users/grade/${user.id}`)
+          .get(`/api/v1/users/grade/${user.id}`)
           .then(response => {
               let years = response.data.filter(year=>year!==null)
             this.setState({years:years});
           })
           .catch(function(error) {})
     await axios
-      .get(`http://localhost:5000/users/${user.id}`)
+      .get(`/api/v1/users/${user.id}`)
       .then(response => {
         this.setState({
           user: response.data

@@ -30,7 +30,7 @@ class UsersContainer extends React.Component {
   }
   handleGetUsers = () => {
     axios
-      .get("http://localhost:5000/users/")
+      .get("/api/v1/users/")
       .then(response => {
         console.log("ss", response);
         this.setState({

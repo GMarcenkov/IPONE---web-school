@@ -22,7 +22,7 @@ handleGetSubjects= async ()=>{
     let rates=[]
 
   await  axios
-      .get(`http://localhost:5000/rates/user/${user.id}/${this.props.grade}`)
+      .get(`/api/v1/rates/user/${user.id}/${this.props.grade}`)
       .then(response => {
         subjects=response.data.subjects
           teachers=response.data.teachers
