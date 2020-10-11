@@ -1,7 +1,7 @@
 import React,{Fragment} from 'react';
 import './App.css';
-import Routes from "./client/desktop/routes";
-import AdminRoutes from "./client/admin/routes";
+import Routes from "./desktop/routes";
+import AdminRoutes from "./admin/routes";
 
 function App() {
   return (
