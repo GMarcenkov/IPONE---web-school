@@ -8,12 +8,12 @@ const path = require('path');
 require("dotenv").config();
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
 
-// const routes = require('../routes/api');
+
 
 mongoose.connect(process.env.ATLAS_URI, {
   useNewUrlParser: true,
@@ -28,6 +28,12 @@ connection.once("open", () => {
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build'));
+}
+
+app.use(morgan('tiny'));
 const usersRouter = require("./routes/users");
 app.use("/api/v1/users", usersRouter);
 const teacherRouter=require("./routes/teacher");
@@ -48,18 +54,6 @@ const schoolYearRouter = require("./routes/schoolYear");
 app.use("/api/v1/schoolYears", schoolYearRouter);
 const categoryRouter = require("./routes/category");
 app.use("/api/v1/category", categoryRouter);
-
-
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('client/build'));
-  console.log('production')
-}else{
-  console.log('develop')
-}
-
-app.use(morgan('tiny'));
-// app.use('/api', routes);
-
 
 
 
