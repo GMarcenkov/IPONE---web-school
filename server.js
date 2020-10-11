@@ -35,25 +35,25 @@ if (process.env.NODE_ENV === 'production') {
 
 
 app.use(morgan('tiny'));
-const usersRouter = require("../routes/users");
+const usersRouter = require("./routes/users");
 app.use("/.netlify/functions/api/users", usersRouter);
-const teacherRouter=require("../routes/teacher");
+const teacherRouter=require("./routes/teacher");
 app.use("/.netlify/functions/api/v1/teacher",teacherRouter);
-const gradeRouter=require("../routes/grade");
+const gradeRouter=require("./routes/grade");
 app.use("/.netlify/functions/api/v1/grades",gradeRouter);
-const rateRouter=require("../routes/rate");
+const rateRouter=require("./routes/rate");
 app.use("/.netlify/functions/api/v1/rates",rateRouter);
-const studentsInGradeRouter=require("../routes/studentsInGrade");
+const studentsInGradeRouter=require("./routes/studentsInGrade");
 app.use("/.netlify/functions/api/v1/studentsInGrade",studentsInGradeRouter);
-const subjectRouter=require("../routes/subject");
+const subjectRouter=require("./routes/subject");
 app.use("/.netlify/functions/api/v1/subject",subjectRouter);
-const classRouter=require("../routes/subjectClass");
+const classRouter=require("./routes/subjectClass");
 app.use("/.netlify/functions/api/v1/class",classRouter);
-const authentication = require("../routes/authentication");
+const authentication = require("./routes/authentication");
 app.use("/.netlify/functions/api/v1/auth", authentication);
-const schoolYearRouter = require("../routes/schoolYear");
+const schoolYearRouter = require("./routes/schoolYear");
 app.use("/api/v1/schoolYears", schoolYearRouter);
-const categoryRouter = require("../routes/category");
+const categoryRouter = require("./routes/category");
 app.use("/.netlify/functions/api/category", categoryRouter);
 
 
