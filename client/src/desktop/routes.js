@@ -7,7 +7,7 @@ import { CartContext } from "./cartContext/CartContext";
 import SubjectsPage from "./pages/subjects/SubjectsPage";
 import jwt_decode from "jwt-decode";
 import ContactsPage from "./pages/contacts/ContactsPage";
-
+import NotFoundPage from "./pages/404/NotFoundPage";
 const Routes = props => {
   return (
     <Router>
@@ -17,6 +17,7 @@ const Routes = props => {
           <Route path="/category/:slug" exact component={CategoryProductsPage} />
           <Route path="/login" exact component={Login} />
           <Route path="/contacts" component={ContactsPage} />
+          <Route component={NotFoundPage} />
       </Switch>
     </Router>
   );
