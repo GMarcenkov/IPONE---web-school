@@ -55,7 +55,7 @@ class Login extends React.Component {
         localStorage.setItem("jwt", req.data.token);
 
         req.data.user.isAdmin
-          ? (window.location.href = "/admincp")
+          ? (window.location.href = "/")
            :(window.location.href = "/")
 
       })
@@ -67,10 +67,9 @@ class Login extends React.Component {
     return (
       <div className="form">
         {" "}
-        <NavBar />
         <div className="logo">
-          <FontAwesomeIcon className="icon" icon={faGraduationCap} />
-          Ipon - web school</div>
+         IPON WEB SCHOOL
+         </div>
         <div >
           <LoginContainer
               password={this.state.password}

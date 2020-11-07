@@ -2,6 +2,8 @@
     margin: auto;
     width: 1300px;
     margin-top: 70px;
+    max-width: 100%;
+    min-height: calc(100vh - 320px);
 }
 .subjects_container_title{
     text-align: center;
@@ -11,4 +13,18 @@
 }
 .list_container{
     margin-top: 100px;
+    border: solid 2px #125899;
+}
+.header{
+text-align: center;
+    border: solid 2px #125899;
+    font-size: 20px;
+    background: #125899;
+    color: white;
+}
+@media only screen and (max-width: 750px) {
+    .list_container{
+        margin-top: 100px;
+        overflow: scroll;
+    }
 }

@@ -30,6 +30,9 @@
     margin-left: 18px;
     margin-bottom: 40px;
     background: #125899;
+    align-items: center;
+    justify-content: center;
+    display: flex;
 }
 .year_form:hover{
     width: 200px;
@@ -45,7 +48,7 @@
     background: white;
 }
 .year_banner{
-    margin-top: 24px;
+
 text-align: center;
     font-size: 30px;
 

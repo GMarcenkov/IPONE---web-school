@@ -1,8 +1,9 @@
 .form {
     background-color: white;
-    min-height: 100vh;
+    min-height: calc(100vh - 520px);
     display: flow;
     color: white;
+    margin-top: 50px;
 }
 .submit{
     border: solid 2px #125899;
@@ -16,6 +17,7 @@
     color: #125899;
     font-weight: bold;
     margin-top: 100px;
+    cursor: pointer;
  }
 .submit:hover{
     margin-top: 100px;
@@ -38,6 +40,7 @@
     padding-top: 100px;
     margin: auto;
     width: 800px;
+    max-width: 100%;
 
 }
 .label_password{
@@ -60,8 +63,7 @@
 }
 .logo{
     color: #125899;
-    margin:auto;
-    width: 900px;
+    text-align: center;
     font-size: 70px;
     font-weight: bolder;
     text-shadow: 8px 2px 9px rgb(18, 88, 153);

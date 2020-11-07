@@ -33,7 +33,6 @@
     border: solid 2px #125899;
     width: 150px;
     text-align: center;
-    padding-top: 45px;
     height: 150px;
     border-radius:100px;
     background: #125899;
@@ -43,13 +42,15 @@
     margin-right: 18px;
     margin-left: 18px;
     margin-bottom: 40px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
 }
 .grade_number:hover{
     cursor: pointer;
     border: solid 2px #125899;
     width: 150px;
     text-align: center;
-    padding-top: 45px;
     height: 150px;
     border-radius: 220px;
     background: white;

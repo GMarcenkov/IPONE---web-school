@@ -1,0 +1,61 @@
+.title {
+  font-size: 35px;
+  color: #125899;
+  text-align: center;
+  font-weight: bolder;
+}
+.school_years_container {
+  margin: auto;
+  max-width: 1000px;
+  width: 100%;
+  padding-top: 100px;
+  min-height: calc(100vh - 320px);
+}
+.years_list_container {
+  display: flex;
+  margin-top: 50px;
+  flex-wrap: wrap;
+}
+@media only screen and (max-width: 450px) {
+  .years_list_container {
+    display: flex;
+    margin-top: 50px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+    .school_years_container {
+        padding-top:50px;
+    }
+}
+
+.year_banner {
+  width: 200px;
+  height: 70px;
+  border: solid 2px #125899;
+  margin-right: 20px;
+  margin-bottom: 40px;
+  border-radius: 20px;
+  color: white;
+  background: #125899;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+.year_banner:hover {
+  width: 200px;
+  height: 70px;
+  border: solid 2px #125899;
+  margin-right: 20px;
+  border-radius: 20px;
+  color: #125899;
+  background: white;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+.year {
+  font-weight: bolder;
+  font-size: 30px;
+}

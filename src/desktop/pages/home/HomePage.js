@@ -4,23 +4,21 @@ import NavBar from "../../modules/layout/navBar/NavBar";
 import "../../modules/layout/Wrapper/LayoutWrapper.css";
 import ProfileContainer from "../../modules/profile/ProfileContainer";
 import jwt_decode from "jwt-decode";
+import SchoolYearsContainer from "../../modules/schoolYears/SchoolYearsContainer";
+import Footer from "../../modules/layout/footer/Footer";
 
 const HomePage = props => {
-    let user;
-    if (localStorage.getItem("jwt")) {
-        user = jwt_decode(localStorage.getItem("jwt"));
-    }else{
-        user=null
-    }
-    if(user===null){
-        (window.location.href = "/login")
-    }
-  return (
-    <div>
-      <NavBar />
-        <ProfileContainer />
-    </div>
-  );
+  if (localStorage.getItem("jwt") === null) {
+   {window.location = "/login"}
+  }else{
+      return (
+          <div>
+              <NavBar />
+             <SchoolYearsContainer/>
+              <Footer/>
+          </div>
+      );
+  }
 };
 
 HomePage.propTypes = {};

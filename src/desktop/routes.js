@@ -3,21 +3,27 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import HomePage from "./pages/home/HomePage";
 import Login from "./modules/login/Login";
 import CategoryProductsPage from "./pages/category/CategoryProductsPage";
-import { CartContext } from "./cartContext/CartContext";
 import SubjectsPage from "./pages/subjects/SubjectsPage";
-import jwt_decode from "jwt-decode";
 import ContactsPage from "./pages/contacts/ContactsPage";
 import NotFoundPage from "./pages/404/NotFoundPage";
-const Routes = (props) => {
+import LoginPage from "./pages/login/LoginPage";
+import ProfilePage from "./pages/profile/ProfilePage";
+import StatisticsPage from "./pages/statistics/StatisticsPage";
+import TeamPage from "./pages/team/TeamPage";
+
+const Routes = props => {
   return (
     <Router>
       <Switch>
         <Route path="/" exact component={HomePage} />
         <Route path="/subjects/:year" exact component={SubjectsPage} />
-        <Route path="/category/:slug" exact component={CategoryProductsPage} />
-        <Route path="/login" exact component={Login} />
-        <Route path="/contacts" component={ContactsPage} />
-        {/* <Route component={NotFoundPage} /> */}
+        {/*<Route path="/category/:slug" exact component={CategoryProductsPage} />*/}
+        <Route path="/login" exact component={LoginPage} />
+        <Route path="/profile" exact component={ProfilePage} />
+        <Route path="/analytics" exact component={LoginPage} />
+        <Route path="/contacts" exact component={ContactsPage} />
+        <Route path="/developers" exact component={TeamPage} />
+        <Route path="/statistics" exact component={StatisticsPage} />
       </Switch>
     </Router>
   );

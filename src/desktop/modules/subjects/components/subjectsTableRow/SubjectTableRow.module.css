@@ -1,28 +1,37 @@
 .subject_title{
-    width:250px;
+    width:200px;
+    border: solid 2px #125899;
+    font-weight: bolder;
 }
 .teacher{
     width: 200px;
+    border: solid 2px #125899;
+}
+.term{
+    /*border: solid 2px #125899;*/
+    display: flex;
+    flex-wrap: wrap;
+    min-width: 160px;
+}
+.half{
+    width: 10px;
+    text-align: center;
+    font-size: 30px;
+    border: solid 2px #125899;
+    color: #125899;
+    font-weight: bolder;
 }
 .finalRate{
-    width: 100px;
+    width: 50px;
     text-align: center;
     background: #125899;
     color: white;
     font-size: 30px;
     font-weight: bolder;
-    border-bottom: solid 2px white;
-    border-radius: 20px;
+    border: solid 2px #125899;
 }
-.term{
-    width:200px;
+.rates{
+  padding:5px 7px;
+    border: solid 2px #125899;
 }
-.averageRate{
-    width: 100px;
-    text-align: center;
-}
-.half{
-    width: 100px;
-    text-align: center;
-    font-size: 20px;
-}
+

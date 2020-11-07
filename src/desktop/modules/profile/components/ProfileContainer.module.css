@@ -3,4 +3,18 @@
     max-width: 900px;
     width: 100%;
     margin-top: 100px;
+    min-height: calc(100vh - 320px);
+
+}
+.container_title {
+    font-weight: bolder;
+    font-size: 35px;
+    color: #125899;
+    text-align: center;
+    margin-bottom: 50px;
+  }
+@media only screen and (max-width: 450px) {
+    .profileContainer_holder{
+        margin-top: 50px;
+    }
 }

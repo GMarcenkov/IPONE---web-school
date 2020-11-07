@@ -21,9 +21,9 @@ class ContactsContainer extends React.Component {
                 <h1>
                     Контакти
                 </h1>
-                <address>
+                <address style={{"color":"black"}}>
                     <p>
-                      Потърсете ни на имейл: <a href="mailto:georgi56126@gmail.com">georgi56126@gmail.com</a>
+                      Потърсете ни на имейл: <a style={{"color":"black","font-size":"20px","font-weight":"bolder" }} href="mailto:iponwebschool@gmail.com">iponwebschool@gmail.com</a>
                     </p>
                 </address>
                 <p>

@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import SubjectCss from '../../Subjects.module.css';
 
 const SubjectTableHead = ({children}) => {
     return (
-        <thead className="table_head">
+        <thead >
         {children}
         </thead>
     );

@@ -1,73 +1,45 @@
-
 .icon {
   color: white;
-  font-size: 200px;
+  margin-right: 20%;
 }
-
-.navbarLogo {
-  color:white;
-  font-size: 40px;
-  text-decoration: none;
-  font-weight: bolder;
-}
-.navbarLogo:hover {
+.icon:hover {
   color: #34ce57;
 }
-.navbar_container{
-  border-bottom:solid 2px black;
+
+.navbar_container {
   background: #125899;
   color: white;
-  height: 85px;
-
 }
-.navbar_content{
-  background: #125899;
-  flex-wrap: wrap;
+.navbar_content {
   max-width: 900px;
   display: flex;
   margin: auto;
   width: 100%;
   padding-top: 20px;
   padding-bottom: 20px;
+  align-items: center;
+  justify-content: center;
+  font-size: 200%;
 }
-.exit_button_content{
+.exit_button_content {
   padding: 5px;
-  margin-left: 30px;
   background: #dc3545;
   cursor: pointer;
   font-weight: bold;
   color: white;
   border-radius: 20px;
 }
-.exit_button_content:hover{
+.exit_button_content:hover {
   padding: 5px;
-  margin-left: 30px;
   background: #c82333;
   cursor: pointer;
   font-weight: bold;
   color: white;
   border-radius: 20px;
 }
-
 @media only screen and (max-width: 450px) {
-  .exit_button_content{
-    padding: 20px;
-    margin-left: 30px;
-    background: #dc3545;
-    cursor: pointer;
-    font-weight: bolder;
+  .icon {
     color: white;
-    margin-top: 20px;
-    border-radius: 20px;
-  }
-  .navbar_content{
-    align-items: center;
-    justify-content: center;
-    display: flex;
-  }
-  .navbar_container{
-    margin-bottom: 200px;
+    margin-right: 15%;
   }
 }
-
-

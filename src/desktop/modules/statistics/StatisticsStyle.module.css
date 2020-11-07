@@ -1,0 +1,22 @@
+.container {
+  width: 1200px;
+  max-width: 100%;
+  margin: auto;
+  margin-top: 100px;
+  min-height: calc(100vh - 320px);
+}
+
+.container_title {
+  font-weight: bolder;
+  font-size: 35px;
+  color: #125899;
+  text-align: center;
+}
+@media only screen and (max-width: 450px) {
+  .container {
+    width: 1200px;
+    max-width: 100%;
+    margin: auto;
+    margin-top: 50px;
+  }
+}
