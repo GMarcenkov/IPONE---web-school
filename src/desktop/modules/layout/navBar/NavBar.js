@@ -10,11 +10,13 @@ import { faChartLine } from "@fortawesome/free-solid-svg-icons";
 let user;
 
 if (localStorage.getItem("jwt") === null) {
+  console.log('nema')
   user = null;
 } else {
+  console.log('ima')
   user = jwt_decode(localStorage.getItem("jwt"));
 }
-
+console.log(user)
 function Exit() {
   localStorage.removeItem("jwt");
   window.location = "/login";

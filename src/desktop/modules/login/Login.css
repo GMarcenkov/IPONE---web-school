@@ -1,9 +1,10 @@
 .form {
     background-color: white;
-    min-height: calc(100vh - 520px);
+
     display: flow;
     color: white;
     margin-top: 50px;
+    min-height: calc(100vh - 320px);
 }
 .submit{
     border: solid 2px #125899;
@@ -20,6 +21,7 @@
     cursor: pointer;
  }
 .submit:hover{
+    
     margin-top: 100px;
     text-align: center;
     font-size: 200%;

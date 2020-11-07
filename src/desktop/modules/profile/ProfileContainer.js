@@ -4,7 +4,13 @@ import SchoolYearsList from "../schoolYears/schoolYears/schoolYearsList";
 import jwt_decode from "jwt-decode";
 import axios from "axios";
 import Profile from "./components/ProfileContainer.module.css";
-let user = jwt_decode(localStorage.getItem("jwt"));
+
+let user;
+
+if (localStorage.getItem("jwt")) {
+     user = jwt_decode(localStorage.getItem("jwt"));
+  }
+
 
 class ProfileContainer extends React.Component {
   constructor(props) {

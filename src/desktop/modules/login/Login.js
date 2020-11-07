@@ -3,7 +3,6 @@ import "./Login.css";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGraduationCap } from "@fortawesome/free-solid-svg-icons";
-import NavBar from "../layout/navBar/NavBar";
 import LoginContainer from "./components/LoginContainer";
 
 class Login extends React.Component {

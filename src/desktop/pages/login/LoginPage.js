@@ -5,14 +5,15 @@ import ProfileContainer from "../../modules/profile/ProfileContainer";
 import Login from "../../modules/login/Login";
 import Footer from '../../modules/layout/footer/Footer';
 
+
 const LoginPage = props => {
-  
+  console.log(localStorage.getItem("jwt"))
     if (localStorage.getItem("jwt")) {
         {window.location = "/"}
     }else{
         return (
             <div>
-                <NavBar />
+                <NavBar/>
                 <Login/>
                 <Footer/>
             </div>
