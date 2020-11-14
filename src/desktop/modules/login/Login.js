@@ -4,6 +4,8 @@ import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGraduationCap } from "@fortawesome/free-solid-svg-icons";
 import LoginContainer from "./components/LoginContainer";
+import {Helmet} from "react-helmet";
+import gosho from '../../../images/georgi.jpg'
 
 class Login extends React.Component {
   constructor(props) {
@@ -66,6 +68,13 @@ class Login extends React.Component {
     return (
       <div className="form">
         {" "}
+        <Helmet>
+        <meta property="og:url"                content="http://www.nytimes.com/2015/02/19/arts/international/when-great-minds-dont-think-alike.html" />
+        <meta property="og:type"               content="article" />
+        <meta property="og:title"              content="When Great Minds Don’t Think Alike" />
+        <meta property="og:description"        content="How much does culture influence creative thinking?" />
+        <meta property="og:image"              content={gosho}/>
+            </Helmet>
         <div className="logo">
          IPON WEB SCHOOL
          </div>

@@ -2,11 +2,38 @@ import React from 'react';
 import TeamCss from './TeamCss.module.css';
 import Georgi from '../../../images/georgi.jpg';
 import Nikola from '../../../images/nikola.jpg';
+import {Helmet} from "react-helmet";
+
 
 const TeamContainer=()=>{
 
     return(
         <div className={TeamCss.container}>
+             <Helmet>
+                <meta charSet="utf-8" />
+                <title>За Основателите</title>
+                <link rel="canonical" href="http://mysite.com/example" />
+        
+                 {/* General tags */}
+            
+                <meta name="description" content="description" />
+                {/* OpenGraph tags */}
+                <meta name="og:url" content="URL" />
+                <meta name="og:title" content="title" />
+                <meta name="og:description" content="og:description" />
+                <meta name="og:image" content={Nikola} />
+                <meta name="og:type" content="website" />
+                <meta name="fb:app_id" content="facebook" />
+                {/* Twitter Card tags */}
+                <meta name="twitter:title" content="twitter title" />
+                <meta name="twitter:description" content="twiter desc" />
+                <meta name="twitter:image" content={Nikola} />
+                <meta name="twitter:card" content="summary" />
+                <meta
+                    name="twitter:creator"
+                    content="Twitter creater"
+                />
+            </Helmet>
             <div className={TeamCss.container_title}>Разработчици на приложението</div>
             <section className={TeamCss.description_container}>
                 <img src={Georgi} className={TeamCss.picture} />
