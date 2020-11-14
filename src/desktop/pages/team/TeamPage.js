@@ -2,7 +2,7 @@ import React from 'react';
 import NavBar from "../../modules/layout/navBar/NavBar";
 import Footer from "../../modules/layout/footer/Footer";
 import TeamContainer from '../../modules/team/TeamContainer';
-
+import {Helmet} from "react-helmet";
 
 const TeamPage=()=>{
 

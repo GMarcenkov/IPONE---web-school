@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import NavBar from "../../modules/layout/navBar/NavBar";
 import SubjectsContainer from "../../modules/subjects/SubjectsContainer";
 import Footer from '../../modules/layout/footer/Footer';
+import {Helmet} from "react-helmet";
 
 const SubjectsPage = props => {
     return (
