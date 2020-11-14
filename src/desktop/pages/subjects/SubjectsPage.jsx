@@ -8,6 +8,12 @@ const SubjectsPage = props => {
     return (
         <div>
             <NavBar/>
+            <Helmet>
+                        <title>SubjectsPage</title>
+                        <meta property="og:description"   content=" SubjectsPage " />
+                        <meta property="og:description"   content=" SubjectsPage " />
+                        <link rel="canonical" href="https://iponwebschool.netlify.app/login" />
+            </Helmet>
             <SubjectsContainer grade={props.match.params.year} />
             <Footer/>
         </div>

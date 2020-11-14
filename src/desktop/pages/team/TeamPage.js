@@ -8,6 +8,11 @@ const TeamPage=()=>{
 
     return(
         <div>
+             <Helmet>
+                        <title>LOGIN</title>
+                        <meta property="og:description"   content=" te tova e opisanieto " />
+                        <meta property="og:description"   content=" te tova e opisanieto " />
+            </Helmet>
             <NavBar/>
             <TeamContainer/>
             <Footer/>

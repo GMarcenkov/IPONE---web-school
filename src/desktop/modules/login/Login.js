@@ -68,9 +68,11 @@ class Login extends React.Component {
 
     return (
       <div className="form">
-        {" "}
             <Helmet>
+                        <title>LOGIN</title>
                         <meta property="og:description"   content=" te tova e opisanieto " />
+                        <meta property="description"   content=" te tova e opisanieto " />
+                        <link rel="canonical" href="https://iponwebschool.netlify.app/login" />
             </Helmet>
         <div className="logo">
          IPON WEB SCHOOL
