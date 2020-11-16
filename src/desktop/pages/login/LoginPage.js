@@ -4,6 +4,7 @@ import NavBar from "../../modules/layout/navBar/NavBar";
 import ProfileContainer from "../../modules/profile/ProfileContainer";
 import Login from "../../modules/login/Login";
 import Footer from '../../modules/layout/footer/Footer';
+import TestHelmet from './TestHelmet';
 
 
 const LoginPage = props => {
@@ -13,9 +14,12 @@ const LoginPage = props => {
     }else{
         return (
             <div>
-                <NavBar/>
-                <Login/>
-                <Footer/>
+                <TestHelmet>
+                        <NavBar/>
+                        <Login/>
+                        <Footer/>
+                </TestHelmet>
+               
             </div>
         );
     }
