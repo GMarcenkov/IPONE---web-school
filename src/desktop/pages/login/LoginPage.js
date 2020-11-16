@@ -14,12 +14,12 @@ const LoginPage = props => {
     }else{
         return (
             <div>
-                <TestHelmet>
+               
                         <NavBar/>
                         <Login/>
                         <Footer/>
-                </TestHelmet>
                
+                        {console.log('2')}
             </div>
         );
     }

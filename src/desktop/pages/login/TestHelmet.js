@@ -6,6 +6,7 @@ export default function TestHelmet(props) {
     return (
       
         <Helmet>
+            {console.log('1')}
                 <meta charSet="utf-8" />
                 <title>За Основателите</title>
                 <link rel="canonical" href="http://mysite.com/example" />

@@ -10,6 +10,8 @@ import LoginPage from "./pages/login/LoginPage";
 import ProfilePage from "./pages/profile/ProfilePage";
 import StatisticsPage from "./pages/statistics/StatisticsPage";
 import TeamPage from "./pages/team/TeamPage";
+import TestHelmet from "./pages/login/TestHelmet";
+import LayoutRoute from "./pages/login/LayoutRoute";
 
 const Routes = props => {
   return (
@@ -18,7 +20,11 @@ const Routes = props => {
         <Route path="/" exact component={HomePage} />
         <Route path="/subjects/:year" exact component={SubjectsPage} />
         {/*<Route path="/category/:slug" exact component={CategoryProductsPage} />*/}
-        <Route path="/login" exact component={LoginPage} />
+        <LayoutRoute
+        exact
+         path="/login"
+           component={LoginPage}
+        />
         <Route path="/profile" exact component={ProfilePage} />
         <Route path="/analytics" exact component={LoginPage} />
         <Route path="/contacts" exact component={ContactsPage} />
