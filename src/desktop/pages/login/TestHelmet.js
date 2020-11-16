@@ -13,21 +13,21 @@ export default function TestHelmet(props) {
         
                  {/* General tags */}
             
-                <meta name="description" content="description" />
+                <meta property="description" content="description" />
                 {/* OpenGraph tags */}
-                <meta name="og:url" content="URL" />
-                <meta name="og:title" content="title" />
-                <meta name="og:description" content="og:description" />
-                <meta name="og:image" content={Nikola} />
-                <meta name="og:type" content="website" />
-                <meta name="fb:app_id" content="facebook" />
+                <meta property="og:url" content="URL" />
+                <meta property="og:title" content="title" />
+                <meta property="og:description" content="og:description" />
+                <meta property="og:image" content={Nikola} />
+                <meta property="og:type" content="website" />
+                <meta property="fb:app_id" content="facebook" />
                 {/* Twitter Card tags */}
-                <meta name="twitter:title" content="twitter title" />
-                <meta name="twitter:description" content="twiter desc" />
-                <meta name="twitter:image" content={Nikola} />
-                <meta name="twitter:card" content="summary" />
+                <meta property="twitter:title" content="twitter title" />
+                <meta property="twitter:description" content="twiter desc" />
+                <meta property="twitter:image" content={Nikola} />
+                <meta property="twitter:card" content="summary" />
                 <meta
-                    name="twitter:creator"
+                    property="twitter:creator"
                     content="Twitter creater"
                 />
             </Helmet>

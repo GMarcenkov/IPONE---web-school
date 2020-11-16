@@ -14,11 +14,11 @@ export default function LayoutRoute({
      {...restProps}
      render={props => {
        return (
-         <TestHelmet {...props}>
+         <Meta {...props}>
          
              <Component {...props}/>
          
-         </TestHelmet>
+         </Meta>
        );
      }}/>
   );
