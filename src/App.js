@@ -6,7 +6,7 @@ import ReactGa from  'react-ga';
 
 function App() {
     useEffect(()=>{
-        ReactGa.initialize("G-JE6QZ9D1JS")
+        ReactGa.initialize("UA-165034235-1")
         ReactGa.pageview('/login')
     },[])
 
